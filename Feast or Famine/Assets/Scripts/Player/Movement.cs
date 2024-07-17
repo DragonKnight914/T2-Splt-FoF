@@ -38,13 +38,13 @@ public class Movement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
 
-        if (movement.x != 0)
+        /*if (movement.x != 0)
         {
             movement.y = 0;
         }
         else if (movement.y != 0)
         {
             movement.x = 0;
-        }
+        }*/
     }
 }
