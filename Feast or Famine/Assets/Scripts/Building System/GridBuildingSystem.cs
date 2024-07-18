@@ -40,8 +40,24 @@ public class GridBuildingSystem : MonoBehaviour
     }
 
     #endregion
-
+      
     #region Tilemap Management
+
+    static TileBase[] GetTilesBlock(BoundsInt area, Tilemap tilemap)
+    {
+        TileBase[] array = new TileBase[area.size.x * area.size.y * area.size.z];
+        int counter = 0;
+
+        foreach (var v in area.allPositionsWithin)
+        {
+            Vector3Int pos = new Vector3Int(v.x, v.y, 0);
+
+            array[counter] = tilemap.GetTile(pos);
+            counter++;
+        }
+
+        return array;
+    }
 
 #endregion
 
