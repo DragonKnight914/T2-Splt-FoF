@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 public class GridBuildingSystem : MonoBehaviour
@@ -16,6 +17,10 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] Tile t_White;
     [SerializeField] Tile t_Green;
     [SerializeField] Tile t_Red;
+
+    Building temporary;
+    Vector3 prevPos;
+    private BoundsInt prevArea;
 
 
     #region Unity Methods
@@ -36,7 +41,32 @@ public class GridBuildingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!temporary)
+        {
+            return;
+        }
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(EventSystem.current.IsPointerOverGameObject(0))
+            {
+                return;
+            }
+
+            if(!temporary.Placed)
+            {
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
+
+                if (prevPos != cellPos)
+                {
+                    temporary.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.4f, 1f, 0f));
+                    prevPos = cellPos;
+                    FollowBuilding();
+                }
+            }
+        }
     }
 
     #endregion
@@ -59,7 +89,66 @@ public class GridBuildingSystem : MonoBehaviour
         return array;
     }
 
-#endregion
+    static void SetTilesBlock(BoundsInt area, TileType type, Tilemap tilemap)
+    {
+        int size = area.size.x * area.size.y * area.size.z;
+        TileBase[] tileArray = new TileBase[size];
+
+        FillTiles(tileArray, type);
+
+        tilemap.SetTilesBlock(area, tileArray);
+    }
+
+    static void FillTiles(TileBase[] arr, TileType type)
+    {
+        for (int i = 0; i < arr.Length; i++)
+        {
+            arr[i] = tileBases[type];
+        }
+    }
+
+    #endregion
+
+    #region Building Placement
+    public void InitializeWithBuilding(GameObject building)
+    {
+        temporary = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
+        FollowBuilding();
+
+    }
+
+    void ClearArea()
+    {
+        TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.z];
+        FillTiles(toClear, TileType.Empty);
+        temp.SetTilesBlock(prevArea, toClear);
+    }
+
+    void FollowBuilding()
+    {
+        ClearArea();
+
+        temporary.area.position = gridLayout.WorldToCell(temporary.gameObject.transform.position);
+        BoundsInt buildingArea = temporary.area;
+
+        TileBase[] baseArray = GetTilesBlock(buildingArea, main);
+
+        int size = baseArray.Length;
+        TileBase[] tileArray = new TileBase[size];
+
+        for(int i = 0; i < baseArray.Length; i++){
+
+                if (baseArray[i] == tileBases[TileType.White]) {
+                    tileArray[i] = tileBases[TileType.Green];
+                }
+
+                else {
+                    FillTiles(tileArray, TileType.Red);
+                    break;
+                }
+        }
+    }
+    #endregion
 
     public enum TileType
     { 
