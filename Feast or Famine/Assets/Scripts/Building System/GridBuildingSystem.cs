@@ -61,11 +61,23 @@ public class GridBuildingSystem : MonoBehaviour
 
                 if (prevPos != cellPos)
                 {
-                    temporary.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.4f, 1f, 0f));
+                    temporary.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(2f, 2f, 2f));
                     prevPos = cellPos;
                     FollowBuilding();
                 }
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (temporary.CanBePlaced())
+            {
+                temporary.Place();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ClearArea();
+            Destroy(temporary.gameObject);
         }
     }
 
@@ -136,9 +148,11 @@ public class GridBuildingSystem : MonoBehaviour
         int size = baseArray.Length;
         TileBase[] tileArray = new TileBase[size];
 
-        for(int i = 0; i < baseArray.Length; i++){
+        for(int i = 0; i < baseArray.Length; i++)
+        {
 
-                if (baseArray[i] == tileBases[TileType.White]) {
+                if (baseArray[i] == tileBases[TileType.White]) 
+                {
                     tileArray[i] = tileBases[TileType.Green];
                 }
 
@@ -147,7 +161,33 @@ public class GridBuildingSystem : MonoBehaviour
                     break;
                 }
         }
+
+        /*
+        temp.SetTilesBlock(buildingArea, tileArray);
+        prevArea = buildingArea;
+        */
     }
+
+    public bool CanTakeArea(BoundsInt area)
+    {
+        TileBase[] baseArray = GetTilesBlock(area, main);
+        foreach(var b in baseArray)
+        {
+            if(b != tileBases[TileType.White])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void TakeArea(BoundsInt area)
+    {
+        SetTilesBlock(area, TileType.Empty, temp);
+        SetTilesBlock(area, TileType.Green, main);
+    }
+
     #endregion
 
     public enum TileType
