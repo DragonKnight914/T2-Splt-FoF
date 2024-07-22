@@ -55,6 +55,7 @@ public class EnemyWave
         if (Complete)
             return;
 
+        cooldown -= deltaTime;
         if (cooldown <= 0)
         {
             cooldown = SecondsBetweenSpawns;
