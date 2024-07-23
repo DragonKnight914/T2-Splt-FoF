@@ -9,8 +9,8 @@ public class GridBuildingSystem : MonoBehaviour
     public static GridBuildingSystem instance;
 
     public GridLayout gridLayout;
-    public Tilemap main;
-    public Tilemap temp;
+    public Tilemap mainTile;
+    public Tilemap tempTile;
 
     static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
 
@@ -61,7 +61,7 @@ public class GridBuildingSystem : MonoBehaviour
 
                 if (prevPos != cellPos)
                 {
-                    temporary.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(2f, 2f, 2f));
+                    temporary.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(0f, 0f, 0f));
                     prevPos = cellPos;
                     FollowBuilding();
                 }
@@ -133,7 +133,7 @@ public class GridBuildingSystem : MonoBehaviour
     {
         TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.z];
         FillTiles(toClear, TileType.Empty);
-        temp.SetTilesBlock(prevArea, toClear);
+        tempTile.SetTilesBlock(prevArea, toClear);
     }
 
     void FollowBuilding()
@@ -143,7 +143,7 @@ public class GridBuildingSystem : MonoBehaviour
         temporary.area.position = gridLayout.WorldToCell(temporary.gameObject.transform.position);
         BoundsInt buildingArea = temporary.area;
 
-        TileBase[] baseArray = GetTilesBlock(buildingArea, main);
+        TileBase[] baseArray = GetTilesBlock(buildingArea, mainTile);
 
         int size = baseArray.Length;
         TileBase[] tileArray = new TileBase[size];
@@ -163,14 +163,14 @@ public class GridBuildingSystem : MonoBehaviour
         }
 
         /*
-        temp.SetTilesBlock(buildingArea, tileArray);
+        tempTile.SetTilesBlock(buildingArea, tileArray);
         prevArea = buildingArea;
         */
     }
 
     public bool CanTakeArea(BoundsInt area)
     {
-        TileBase[] baseArray = GetTilesBlock(area, main);
+        TileBase[] baseArray = GetTilesBlock(area, mainTile);
         foreach(var b in baseArray)
         {
             if(b != tileBases[TileType.White])
@@ -184,8 +184,8 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void TakeArea(BoundsInt area)
     {
-        SetTilesBlock(area, TileType.Empty, temp);
-        SetTilesBlock(area, TileType.Green, main);
+        SetTilesBlock(area, TileType.Empty, tempTile);
+        SetTilesBlock(area, TileType.Green, mainTile);
     }
 
     #endregion

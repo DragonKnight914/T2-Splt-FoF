@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8064155985948625638}
   - component: {fileID: 1663504313435373094}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: treeBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6029357742455903414}
   - component: {fileID: 7085905612228352515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tree_iso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 489066443
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 21fde2ea4f8d23c42a886a55d9f04433, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
