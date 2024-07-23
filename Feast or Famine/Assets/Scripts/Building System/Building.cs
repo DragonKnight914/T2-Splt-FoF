@@ -16,10 +16,10 @@ public class Building : MonoBehaviour
 
         if (GridBuildingSystem.instance.CanTakeArea(areaTemp))
         {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     public void Place()
@@ -34,16 +34,4 @@ public class Building : MonoBehaviour
     }
 
     #endregion
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

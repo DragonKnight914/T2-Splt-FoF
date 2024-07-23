@@ -32,7 +32,6 @@ public class GridBuildingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tileBases.Add(TileType.Empty, null);
         tileBases.Add(TileType.White, t_White); 
         tileBases.Add(TileType.Green, t_Green);
         tileBases.Add(TileType.Red, t_Red);
@@ -65,13 +64,6 @@ public class GridBuildingSystem : MonoBehaviour
                     prevPos = cellPos;
                     FollowBuilding();
                 }
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (temporary.CanBePlaced())
-            {
-                temporary.Place();
             }
         }
     }
@@ -157,10 +149,8 @@ public class GridBuildingSystem : MonoBehaviour
                 }
         }
 
-        /*
         tempTile.SetTilesBlock(buildingArea, tileArray);
         prevArea = buildingArea;
-        */
     }
 
     public bool CanTakeArea(BoundsInt area)
@@ -170,6 +160,7 @@ public class GridBuildingSystem : MonoBehaviour
         {
             if(b != tileBases[TileType.White])
             {
+                Debug.Log("Cannot take this area");
                 return false;
             }
         }
@@ -181,6 +172,14 @@ public class GridBuildingSystem : MonoBehaviour
     {
         SetTilesBlock(area, TileType.Empty, tempTile);
         SetTilesBlock(area, TileType.Green, mainTile);
+    }
+
+    public void Place()
+    {
+        if (temporary.CanBePlaced())
+        {
+            temporary.Place();
+        }
     }
 
     #endregion

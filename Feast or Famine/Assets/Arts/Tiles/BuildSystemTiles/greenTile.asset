@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: greenTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 2a69e568896304e4e946216a1898a605, type: 3}
-  m_Color: {r: 0.2583929, g: 0.5660378, b: 0.11480955, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a8715d0f4c3466f4caf6bc3634815250, type: 3}
+  m_Color: {r: 0.079197526, g: 1, b: 0, a: 0.4}
   m_Transform:
     e00: 1
     e01: 0
