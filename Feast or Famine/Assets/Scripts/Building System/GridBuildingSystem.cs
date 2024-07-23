@@ -74,11 +74,6 @@ public class GridBuildingSystem : MonoBehaviour
                 temporary.Place();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ClearArea();
-            Destroy(temporary.gameObject);
-        }
     }
 
     #endregion
@@ -190,6 +185,23 @@ public class GridBuildingSystem : MonoBehaviour
 
     #endregion
 
+    #region Build Mode
+
+    public void ActiveTilemapRenderer(bool hasToEnable)
+    {
+        TilemapRenderer renderer = mainTile.GetComponent<TilemapRenderer>();
+
+        if(hasToEnable == false)
+        {
+            ClearArea();
+            Destroy(temporary.gameObject);
+        }
+
+        renderer.enabled = hasToEnable;
+    }
+
+    #endregion
+
     public enum TileType
     { 
         Empty,
@@ -197,4 +209,5 @@ public class GridBuildingSystem : MonoBehaviour
         Green,
         Red
     }
+
 }
