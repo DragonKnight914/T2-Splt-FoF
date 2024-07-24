@@ -52,6 +52,7 @@ public class MenuController : MonoBehaviour
     //[SerializeField] private Slider fovSlider = null;
     //[SerializeField] private float defaultFOV = 60.0f;
     //public float mainFOV = 60.0f;
+    [SerializeField] private Player P;
     [SerializeField] private float defaultXSens = 0.5f;
     [SerializeField] private float defaultYSens = 0.5f;
     //public float mainSens = 20.0f;
@@ -67,12 +68,12 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        //customizingHash = Animator.StringToHash("isCustomizing");
+        customizingHash = Animator.StringToHash("isCustomizing");
 
-        //resolutions = Screen.resolutions;
-        //resolutionDropdown.ClearOptions();
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
 
-        /*List<string> options = new List<string>();
+        List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
 
@@ -87,7 +88,7 @@ public class MenuController : MonoBehaviour
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();*/
+        resolutionDropdown.RefreshShownValue();
       
         if (PlayerPrefs.HasKey("masterVolume"))
         {
@@ -228,11 +229,16 @@ public class MenuController : MonoBehaviour
             VolumeApply();
         }
 
-        if (MenuType == "Gameplay")
+        /*if (MenuType == "Gameplay")
         {
-
+            sensYTextValue.text = defaultYSens.ToString("0.0");
+            sensYSlider.value = defaultYSens;
+            sensXTextValue.text = defaultXSens.ToString("0.0");
+            sensXSlider.value = defaultXSens;
+            P.sensitivityY = defaultYSens;
+            P.sensitivityX = defaultXSens;
             GameplayApply();
-        }
+        }*/
 
         if (MenuType == "Graphics")
         {
@@ -267,10 +273,10 @@ public class MenuController : MonoBehaviour
         qualityLevel = qualityIndex;
     }
 
-    public void SetYSensitivity()
+    /*public void SetYSensitivity()
     {
         float sens = sensYSlider.value;
-
+        P.sensitivityY = sens;
         sensYTextValue.text = sens.ToString("0.0"); 
 
     }
@@ -278,9 +284,9 @@ public class MenuController : MonoBehaviour
     public void SetXSensitivity()
     {
         float sens = sensXSlider.value;
-
+        P.sensitivityX = sens;
         sensXTextValue.text = sens.ToString("0.0"); 
-    }
+    }*/
 
     /*public void SetFOV(float fov)
     {
