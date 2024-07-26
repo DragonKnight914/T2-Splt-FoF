@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
             Direction();
 
             //turn the camera follow object
-            CameraFollowObject.CallTurn();
+            //CameraFollowObject.CallTurn();
             //rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
         }
         else if (horizontalInput < 0 && faceRight)
@@ -279,7 +279,7 @@ public class Player : MonoBehaviour
             Direction();
 
             //turn the camera follow object
-            CameraFollowObject.CallTurn();
+            //CameraFollowObject.CallTurn();
             //rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
         }
         
