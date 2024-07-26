@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
+using UnityEngine.UIElements.Experimental;
 
 public class GridBuildingSystem : MonoBehaviour
 {
     public static GridBuildingSystem instance;
 
     public GridLayout gridLayout;
-    public Tilemap main;
-    public Tilemap temp;
+    public Tilemap mainTile;
+    public Tilemap tempTile;
 
     static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
 
@@ -21,6 +23,7 @@ public class GridBuildingSystem : MonoBehaviour
     Building temporary;
     Vector3 prevPos;
     private BoundsInt prevArea;
+
 
 
     #region Unity Methods
@@ -61,12 +64,20 @@ public class GridBuildingSystem : MonoBehaviour
 
                 if (prevPos != cellPos)
                 {
-                    temporary.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.4f, 1f, 0f));
+                    temporary.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos);
                     prevPos = cellPos;
                     FollowBuilding();
                 }
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (temporary.CanBePlaced())
+            {
+                temporary.Place();
+            }
+        }
+
     }
 
     #endregion
@@ -119,9 +130,9 @@ public class GridBuildingSystem : MonoBehaviour
 
     void ClearArea()
     {
-        TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.z];
+        TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
         FillTiles(toClear, TileType.Empty);
-        temp.SetTilesBlock(prevArea, toClear);
+        tempTile.SetTilesBlock(prevArea, toClear);
     }
 
     void FollowBuilding()
@@ -131,24 +142,57 @@ public class GridBuildingSystem : MonoBehaviour
         temporary.area.position = gridLayout.WorldToCell(temporary.gameObject.transform.position);
         BoundsInt buildingArea = temporary.area;
 
-        TileBase[] baseArray = GetTilesBlock(buildingArea, main);
+        TileBase[] baseArray = GetTilesBlock(buildingArea, mainTile);
 
         int size = baseArray.Length;
         TileBase[] tileArray = new TileBase[size];
 
-        for(int i = 0; i < baseArray.Length; i++){
-
-                if (baseArray[i] == tileBases[TileType.White]) {
-                    tileArray[i] = tileBases[TileType.Green];
-                }
-
-                else {
-                    FillTiles(tileArray, TileType.Red);
-                    break;
-                }
+        for(int i = 0; i < baseArray.Length; i++)
+        {
+            if (baseArray[i] == tileBases[TileType.White])
+            {
+                tileArray[i] = tileBases[TileType.Green];
+            }
+            else
+            {
+                FillTiles(tileArray, TileType.Red);
+                break;
+            }
         }
+
+        tempTile.SetTilesBlock(buildingArea, tileArray);
+        prevArea = buildingArea;
     }
+
+    public bool CanTakeArea(BoundsInt area)
+    {
+        TileBase[] baseArray = GetTilesBlock(area, mainTile);
+        foreach(var b in baseArray)
+        {
+            if(b != tileBases[TileType.White])
+            {
+                Debug.Log("Cannot take this area");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void TakeArea(BoundsInt area)
+    {
+        SetTilesBlock(area, TileType.Empty, tempTile);
+        SetTilesBlock(area, TileType.Green, mainTile);
+    }
+
     #endregion
+
+
+    public void ExitBuildMode()
+    {
+        ClearArea();
+        Destroy(temporary);
+    }
 
     public enum TileType
     { 
@@ -157,4 +201,5 @@ public class GridBuildingSystem : MonoBehaviour
         Green,
         Red
     }
+
 }

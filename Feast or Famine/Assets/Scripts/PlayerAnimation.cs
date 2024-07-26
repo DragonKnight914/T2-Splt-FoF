@@ -23,7 +23,8 @@ namespace FSR
 
         //Animation States
         const string PLAYER_IDLE = "IdleAnim";
-        const string PLAYER_WALK = "WalkingAnim";
+        const string PLAYER_WALKL = "WalkingLAnim";
+        const string PLAYER_WALKR = "WalkingRAnim";
         const string PLAYER_DASH = "DashAnim";
         const string PLAYER_JUMP = "JumpAnim";
         const string PLAYER_AULOS = "AulosAnim";
@@ -94,9 +95,14 @@ namespace FSR
                 if (P.isGrounded() && !P.isDashing && !isAulosPlaying && rb2d.velocity.y == 0f && !canLand)
                 {
                     
-                    if (xAxis != 0)
+                    if (xAxis >= 0)
                     {
-                        ChangeAnimationState(PLAYER_WALK);
+                        ChangeAnimationState(PLAYER_WALKR);
+                        //fSR_Player.step();
+                    }
+                    else if (xAxis <= 0)
+                    {
+                        ChangeAnimationState(PLAYER_WALKL);
                         //fSR_Player.step();
                     }
                     else

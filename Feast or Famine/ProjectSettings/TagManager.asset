@@ -10,15 +10,15 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Building
+  - 
   - Water
   - UI
   - Ground
+  - Building
+  - Forest
+  - Player
+  - Post Processing
   - 
-  - 
-  - 
-  - 
-  - TDEnemy
   - 
   - 
   - 

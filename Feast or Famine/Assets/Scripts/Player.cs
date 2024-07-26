@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
             Direction();
 
             //turn the camera follow object
-            CameraFollowObject.CallTurn();
+            //CameraFollowObject.CallTurn();
             //rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
         }
         else if (horizontalInput < 0 && faceRight)
@@ -279,7 +279,7 @@ public class Player : MonoBehaviour
             Direction();
 
             //turn the camera follow object
-            CameraFollowObject.CallTurn();
+            //CameraFollowObject.CallTurn();
             //rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
         }
         
@@ -323,7 +323,7 @@ public class Player : MonoBehaviour
         PlayerSounds.PlayOneShot(JumpClip, 0.25f);
         if (jumpCount == 1)
         {
-            defiAnim.SetTrigger("DefiTrigger");
+            //defiAnim.SetTrigger("DefiTrigger");
             PlayerSounds.PlayOneShot(DefiClip, 0.05f);
         }
             
@@ -383,12 +383,12 @@ public class Player : MonoBehaviour
           
         if (Physics2D.BoxCast(transform.position - transform.up * castDistance, boxSize, 0f, Vector2.down, 0f, groundMask))
         {
-            //Debug.Log("Grounded");
+            Debug.Log("Grounded");
             return true;
         }
         else
         {
-            //Debug.Log("Not Grounded");
+            Debug.Log("Not Grounded");
             return false;
         }
     }
