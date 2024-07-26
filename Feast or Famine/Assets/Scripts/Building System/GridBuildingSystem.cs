@@ -49,8 +49,8 @@ public class GridBuildingSystem : MonoBehaviour
             return;
         }
 
-        if(Input.GetMouseButtonDown(0))
-        {
+
+     
             if(EventSystem.current.IsPointerOverGameObject(0))
             {
                 return;
@@ -69,15 +69,14 @@ public class GridBuildingSystem : MonoBehaviour
                     FollowBuilding();
                 }
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (temporary.CanBePlaced())
             {
                 temporary.Place();
             }
         }
-
     }
 
     #endregion
