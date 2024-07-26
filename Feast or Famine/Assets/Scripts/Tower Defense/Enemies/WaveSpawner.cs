@@ -9,7 +9,8 @@ public class WaveSpawner : MonoBehaviour
 {
     public Transform EnemyTargetObjective;
     public int SecondsBetweenWaves = 30;
-    public EnemyWave[] Waves;
+    public List<EnemyWave> Waves;
+    public bool AllWavesSpawned { get; private set; } = false;
 
     private float waveCooldown;
     private EnemyWave currentWave;
@@ -27,27 +28,55 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        currentWave.Update(Time.deltaTime);
+        if (AllWavesSpawned)
+        {
+            return;
+        }
+
+        if (!currentWave.Complete)
+        {
+            // The current wave is active and can spawn enemies
+            currentWave.Update(Time.deltaTime);
+        }
+        else
+        {
+            // Wave is done spawning enemies, now wait till creating the next wave
+            waveCooldown -= Time.deltaTime;
+
+            if (waveCooldown < 0)
+            {
+                waveCooldown = SecondsBetweenWaves;
+
+                // Select the next wave
+                Waves.Remove(currentWave);
+                currentWave = Waves.FirstOrDefault();
+
+                if (currentWave == null)
+                {
+                    AllWavesSpawned = true;
+                }
+            }
+        }
     }
 }
 
 [Serializable]
 public class EnemyWave
 {
-    public TDEnemy Enemy;
+    public List<EnemyWaveSpawnCount> EnemiesInWave;
     public Transform[] SpawnLocations;
-    public int NumberOfEnemies = 10;
     public int SecondsBetweenSpawns = 3;
 
     public bool Complete { get; private set; } = false;
 
     private Transform target;
     private float cooldown;
-    private int enemiesSpawned;
+    private EnemyWaveSpawnCount enemiesToSpawn;
 
     public void SetObjective(Transform objective)
     {
         target = objective;
+        enemiesToSpawn = EnemiesInWave.FirstOrDefault();
     }
 
     public void Update(float deltaTime)
@@ -65,19 +94,48 @@ public class EnemyWave
 
     private void SpawnEnemies()
     {
+        if (enemiesToSpawn.Complete)
+        {
+            // The current enemiesToSpawn is done. Find the next enemies to spawn (that haven't completed yet)
+            enemiesToSpawn = EnemiesInWave.First(x => !x.Complete);
+        }
+
+        // Spawn each enemy for this wave at each spawn point
         foreach (var spawnLocation in SpawnLocations)
         {
-            if (enemiesSpawned >= NumberOfEnemies)
-            {
-                Complete = true;
+            if (enemiesToSpawn.Complete)
                 break;
-            }
 
-            var enemy = GameObject.Instantiate(Enemy, spawnLocation, spawnLocation);
-            enemiesSpawned++;
-
-            enemy.Objective = target;
-            enemy.transform.position = spawnLocation.position;
+            enemiesToSpawn.SpawnEnemy(spawnLocation, target);
         }
+
+        Complete = EnemiesInWave.All(x => x.Complete);
+    }
+}
+
+[Serializable]
+public class EnemyWaveSpawnCount
+{
+    public TDEnemy Enemy;
+    public int NumberOfEnemies = 10;
+
+    public bool Complete { get; private set; } = false;
+
+    private int enemiesSpawned;
+
+    public TDEnemy SpawnEnemy(Transform spawnLocation, Transform target)
+    {
+        var enemy = GameObject.Instantiate(Enemy, spawnLocation, spawnLocation);
+        enemiesSpawned++;
+
+        enemy.Objective = target;
+        enemy.transform.position = spawnLocation.position;
+
+        if (enemiesSpawned >= NumberOfEnemies)
+        {
+            Complete = true;
+        }
+
+        return enemy;
     }
 }
