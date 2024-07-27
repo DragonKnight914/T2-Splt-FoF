@@ -405,7 +405,7 @@ public class Player : MonoBehaviour
     {
         faceRight = !faceRight;
 
-        transform.Rotate(0f, 180f, 0f);
+        //transform.Rotate(0f, 180f, 0f);
     }
 
     public IEnumerator PlayAulos()

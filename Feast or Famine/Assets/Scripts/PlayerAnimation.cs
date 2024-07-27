@@ -22,7 +22,8 @@ namespace FSR
         private bool canLand;
 
         //Animation States
-        const string PLAYER_IDLE = "IdleAnim";
+        const string PLAYER_IDLER = "IdleRAnim";
+        const string PLAYER_IDLEL = "IdleLAnim";
         const string PLAYER_WALKL = "WalkingLAnim";
         const string PLAYER_WALKR = "WalkingRAnim";
         const string PLAYER_DASH = "DashAnim";
@@ -88,26 +89,32 @@ namespace FSR
 
         private void FixedUpdate()
         {
-            if (P.inDialog)
-                ChangeAnimationState(PLAYER_IDLE);
+            if (P.faceRight && P.inDialog)
+                ChangeAnimationState(PLAYER_IDLER);
+            if (!P.faceRight && P.inDialog)
+                ChangeAnimationState(PLAYER_IDLEL);
             else
             {
                 if (P.isGrounded() && !P.isDashing && !isAulosPlaying && rb2d.velocity.y == 0f && !canLand)
                 {
                     
-                    if (xAxis >= 0)
+                    if (xAxis > 0)
                     {
                         ChangeAnimationState(PLAYER_WALKR);
                         //fSR_Player.step();
                     }
-                    else if (xAxis <= 0)
+                    else if (xAxis < 0)
                     {
                         ChangeAnimationState(PLAYER_WALKL);
                         //fSR_Player.step();
                     }
-                    else
+                    else if (P.faceRight && xAxis == 0)
                     {
-                        ChangeAnimationState(PLAYER_IDLE);
+                        ChangeAnimationState(PLAYER_IDLER);
+                    }
+                    else if (!P.faceRight && xAxis == 0)
+                    {
+                        ChangeAnimationState(PLAYER_IDLEL);
                     }
                 }
 

@@ -176,6 +176,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: d549c5ec476ca1340b2cbf159c62b810, type: 2}
     - target: {fileID: 6889376304377297797, guid: 7886c5a2552af0748885457599265d36, type: 3}
+      propertyPath: _newMatch
+      value: M - BaseArea 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889376304377297797, guid: 7886c5a2552af0748885457599265d36, type: 3}
       propertyPath: sfxSlider
       value: 
       objectReference: {fileID: 8927888858196985722}
