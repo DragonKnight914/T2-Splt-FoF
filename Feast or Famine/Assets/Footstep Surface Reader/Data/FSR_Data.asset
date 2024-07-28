@@ -23,9 +23,25 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 9fbabf316c6429d4daadda0ee8314246, type: 3}
   - name: GENERIC
     soundEffects:
+    - {fileID: 8300000, guid: 5ed2b5ba2ecee564a98fa8097b769f71, type: 3}
+    - {fileID: 8300000, guid: b9156a96aded84441830ff0071ca9905, type: 3}
+    - {fileID: 8300000, guid: f4af58b612284f34f8d90a75fbf4c3e9, type: 3}
+    - {fileID: 8300000, guid: 9fbb3594726e8984a81305969ea80525, type: 3}
+    - {fileID: 8300000, guid: 2cf5aae9ec0225a4c8c9d767fd254d01, type: 3}
     - {fileID: 8300000, guid: 4de69ea7d096c434d92fb767b8a6a54a, type: 3}
+  - name: DIRT
+    soundEffects:
+    - {fileID: 8300000, guid: 9fbb3594726e8984a81305969ea80525, type: 3}
     - {fileID: 8300000, guid: b9156a96aded84441830ff0071ca9905, type: 3}
     - {fileID: 8300000, guid: f4af58b612284f34f8d90a75fbf4c3e9, type: 3}
     - {fileID: 8300000, guid: 2cf5aae9ec0225a4c8c9d767fd254d01, type: 3}
     - {fileID: 8300000, guid: 5ed2b5ba2ecee564a98fa8097b769f71, type: 3}
+    - {fileID: 8300000, guid: 4de69ea7d096c434d92fb767b8a6a54a, type: 3}
+  - name: WATER
+    soundEffects:
     - {fileID: 8300000, guid: 9fbb3594726e8984a81305969ea80525, type: 3}
+    - {fileID: 8300000, guid: b9156a96aded84441830ff0071ca9905, type: 3}
+    - {fileID: 8300000, guid: f4af58b612284f34f8d90a75fbf4c3e9, type: 3}
+    - {fileID: 8300000, guid: 2cf5aae9ec0225a4c8c9d767fd254d01, type: 3}
+    - {fileID: 8300000, guid: 5ed2b5ba2ecee564a98fa8097b769f71, type: 3}
+    - {fileID: 8300000, guid: 4de69ea7d096c434d92fb767b8a6a54a, type: 3}
