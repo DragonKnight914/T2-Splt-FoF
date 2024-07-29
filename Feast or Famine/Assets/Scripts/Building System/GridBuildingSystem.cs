@@ -20,6 +20,8 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] Tile t_Green;
     [SerializeField] Tile t_Red;
 
+    [SerializeField] GameObject adviceNotBuild;
+
     Building temporary;
     Vector3 prevPos;
     private BoundsInt prevArea;
@@ -50,7 +52,6 @@ public class GridBuildingSystem : MonoBehaviour
         }
 
 
-     
             if(EventSystem.current.IsPointerOverGameObject(0))
             {
                 return;
@@ -171,6 +172,7 @@ public class GridBuildingSystem : MonoBehaviour
             if(b != tileBases[TileType.White])
             {
                 Debug.Log("Cannot take this area");
+                StartCoroutine(AdviceShow());
                 return false;
             }
         }
@@ -199,6 +201,19 @@ public class GridBuildingSystem : MonoBehaviour
         White,
         Green,
         Red
+    }
+
+    IEnumerator AdviceShow()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            adviceNotBuild.SetActive(true);
+            yield return new WaitForSeconds(.2f);
+            adviceNotBuild.SetActive(false);
+            yield return new WaitForSeconds(.2f);
+        }
+
+        adviceNotBuild.SetActive(false);
     }
 
 }

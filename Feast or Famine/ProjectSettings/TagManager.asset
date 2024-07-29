@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GENERIC
   - GRASS
+  - enemies
   layers:
   - Default
   - TransparentFX

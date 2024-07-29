@@ -9,7 +9,6 @@ public class Life : MonoBehaviour
     [SerializeField] float speed = .5f;
     
     //hypothetical value
-    int lostLife = 5;
     int gainLife = 10;
 
     [SerializeField] Image greenBar;
@@ -20,7 +19,7 @@ public class Life : MonoBehaviour
     {
         greenBar.fillAmount = (float)life  / (float)maxLife;
     }
-    public void LostLife()
+    public void LostLife(int amount)
     {
         if(life <= 0)
         {
@@ -28,7 +27,7 @@ public class Life : MonoBehaviour
         }
         else
         {
-            life -= lostLife;
+            life -= amount;
             StartCoroutine(DecreaseLife());
         }
     }
@@ -86,5 +85,8 @@ public class Life : MonoBehaviour
         redBar.fillAmount = targetFillAmount;
     }
 
-    public void Die() { }
+    public void Die() 
+    {
+        Destroy(gameObject);
+    }
 }
