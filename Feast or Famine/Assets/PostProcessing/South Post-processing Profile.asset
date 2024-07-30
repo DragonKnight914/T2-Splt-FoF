@@ -108,7 +108,7 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 0.38410604, g: 0.745283, b: 0.045701336, a: 1}
+    value: {r: 0.3280082, g: 0.6223427, b: 0.764151, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -172,19 +172,19 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 0
+    value: -20
   tint:
     overrideState: 1
-    value: -16
+    value: 51
   colorFilter:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    overrideState: 1
-    value: -9
+    overrideState: 0
+    value: 0
   saturation:
     overrideState: 0
-    value: -10
+    value: 0
   brightness:
     overrideState: 0
     value: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 0
-    value: -3
+    value: 0
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1440,7 +1440,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: West Post-processing Profile
+  m_Name: South Post-processing Profile
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -3966249179201507219}
