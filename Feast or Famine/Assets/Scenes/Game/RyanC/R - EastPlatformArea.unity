@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 10339996}
   - component: {fileID: 10339998}
   - component: {fileID: 10339997}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,7 +1644,7 @@ GameObject:
   - component: {fileID: 107071358}
   - component: {fileID: 107071360}
   - component: {fileID: 107071359}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoXFollowCam(VerticalRoomsDown)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3839,7 +3839,7 @@ GameObject:
   - component: {fileID: 519420044}
   - component: {fileID: 519420042}
   - component: {fileID: 519420045}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -24652,7 +24652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 654716670}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CameraBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25844,7 +25844,7 @@ GameObject:
   - component: {fileID: 865388486}
   - component: {fileID: 865388485}
   - component: {fileID: 865388487}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoYFollowCam(TightRooms)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30519,6 +30519,7 @@ GameObject:
   - component: {fileID: 1401136080}
   - component: {fileID: 1401136079}
   - component: {fileID: 1401136081}
+  - component: {fileID: 1401136082}
   m_Layer: 0
   m_Name: Layer3
   m_TagString: Untagged
@@ -31775,6 +31776,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1401136082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401136077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d770016719b456b44bb5a16b8d476f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f400a841531c48a4d982f01f44d18906, type: 2}
+  surfaceName: WATER
 --- !u!1001 &1401259204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31856,7 +31871,7 @@ GameObject:
   - component: {fileID: 1419696801}
   - component: {fileID: 1419696803}
   - component: {fileID: 1419696802}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoXFollowCam(VerticalRoomsUp)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38095,7 +38110,7 @@ GameObject:
   - component: {fileID: 1467180112}
   - component: {fileID: 1467180114}
   - component: {fileID: 1467180113}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38183,7 +38198,7 @@ GameObject:
   - component: {fileID: 1472096259}
   - component: {fileID: 1472096261}
   - component: {fileID: 1472096260}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38623,7 +38638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570036986}
   - component: {fileID: 1570036988}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51315,7 +51330,7 @@ GameObject:
   - component: {fileID: 1793852060}
   - component: {fileID: 1793852059}
   - component: {fileID: 1793852061}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53130,7 +53145,7 @@ GameObject:
   - component: {fileID: 1989314454}
   - component: {fileID: 1989314456}
   - component: {fileID: 1989314455}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53218,7 +53233,7 @@ GameObject:
   - component: {fileID: 2017011358}
   - component: {fileID: 2017011360}
   - component: {fileID: 2017011359}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LockPositionCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53305,7 +53320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2032215447}
   - component: {fileID: 2032215446}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
