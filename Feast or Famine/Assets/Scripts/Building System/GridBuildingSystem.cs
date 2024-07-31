@@ -168,7 +168,7 @@ public class GridBuildingSystem : MonoBehaviour
     public bool CanTakeArea(BoundsInt area)
     {
         TileBase[] baseArray = GetTilesBlock(area, mainTile);
-        foreach(var b in baseArray)
+        /*foreach(var b in baseArray)
         {
             if(b != tileBases[TileType.White])
             {
@@ -176,9 +176,21 @@ public class GridBuildingSystem : MonoBehaviour
                 StartCoroutine(AdviceShow());
                 return false;
             }
+        }*/
+
+        foreach (var b in baseArray)
+        {
+            if(b == tileBases[TileType.White])
+            {
+   
+                return true;
+            }
         }
 
-        return true;
+        //Debug.Log("Cannot take this area");
+        StartCoroutine(AdviceShow());
+
+        return false;
     }
 
     public void TakeArea(BoundsInt area)
