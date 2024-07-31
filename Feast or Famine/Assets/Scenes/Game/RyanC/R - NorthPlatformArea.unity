@@ -2052,6 +2052,7 @@ GameObject:
   - component: {fileID: 143761084}
   - component: {fileID: 143761086}
   - component: {fileID: 143761085}
+  - component: {fileID: 143761087}
   m_Layer: 0
   m_Name: BGLayer (1)
   m_TagString: Untagged
@@ -9247,6 +9248,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &143761087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143761083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d770016719b456b44bb5a16b8d476f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f400a841531c48a4d982f01f44d18906, type: 2}
+  surfaceName: GRASS
 --- !u!1 &148246649
 GameObject:
   m_ObjectHideFlags: 0
@@ -9748,7 +9763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233135855}
   - component: {fileID: 233135856}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11054,7 +11069,7 @@ GameObject:
   - component: {fileID: 326785959}
   - component: {fileID: 326785961}
   - component: {fileID: 326785960}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19535,7 +19550,7 @@ GameObject:
   - component: {fileID: 454214414}
   - component: {fileID: 454214416}
   - component: {fileID: 454214415}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: NoXFollowCam(VerticalRoomsDown)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22098,7 +22113,7 @@ GameObject:
   - component: {fileID: 674019329}
   - component: {fileID: 674019331}
   - component: {fileID: 674019330}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22759,7 +22774,7 @@ GameObject:
   - component: {fileID: 791970744}
   - component: {fileID: 791970746}
   - component: {fileID: 791970745}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23301,6 +23316,14 @@ PrefabInstance:
     - target: {fileID: 6507907227914110568, guid: 89d383759ad97a741a23f1e03bbc3fb5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507907227914110568, guid: 89d383759ad97a741a23f1e03bbc3fb5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117129182432268937, guid: 89d383759ad97a741a23f1e03bbc3fb5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.93
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25626,7 +25649,7 @@ GameObject:
   - component: {fileID: 1089082892}
   - component: {fileID: 1089082894}
   - component: {fileID: 1089082893}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: NoYFollowCam(TightRooms)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26309,7 +26332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1148067740}
   - component: {fileID: 1148067741}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26487,7 +26510,7 @@ GameObject:
   - component: {fileID: 1179624518}
   - component: {fileID: 1179624520}
   - component: {fileID: 1179624519}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: NoXFollowCam(VerticalRoomsUp)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26890,7 +26913,7 @@ GameObject:
   - component: {fileID: 1299037697}
   - component: {fileID: 1299037699}
   - component: {fileID: 1299037698}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31154,7 +31177,7 @@ GameObject:
   - component: {fileID: 1514433331}
   - component: {fileID: 1514433333}
   - component: {fileID: 1514433332}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: LockPositionCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32622,7 +32645,7 @@ GameObject:
   - component: {fileID: 1651910311}
   - component: {fileID: 1651910313}
   - component: {fileID: 1651910312}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33120,7 +33143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729320059}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CameraBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34165,7 +34188,7 @@ GameObject:
   - component: {fileID: 1863905301}
   - component: {fileID: 1863905300}
   - component: {fileID: 1863905299}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

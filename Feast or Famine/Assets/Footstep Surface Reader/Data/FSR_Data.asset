@@ -15,28 +15,28 @@ MonoBehaviour:
   surfaces:
   - name: GRASS
     soundEffects:
-    - {fileID: 8300000, guid: 9fbabf316c6429d4daadda0ee8314246, type: 3}
     - {fileID: 8300000, guid: 3c83d10e6bdec8340903ba3b7b54a311, type: 3}
-    - {fileID: 8300000, guid: 38b9124ececed6d4185319b9e79abd90, type: 3}
     - {fileID: 8300000, guid: ffc706ba350979d4b9a5ebe31a8c39c8, type: 3}
+    - {fileID: 8300000, guid: 9fbabf316c6429d4daadda0ee8314246, type: 3}
     - {fileID: 8300000, guid: d145441ca6c819e4d9fc3d9bb142e9b5, type: 3}
+    - {fileID: 8300000, guid: 38b9124ececed6d4185319b9e79abd90, type: 3}
     - {fileID: 8300000, guid: 6fe8037b428cf584abe1275e4be243b0, type: 3}
   - name: GENERIC
     soundEffects:
-    - {fileID: 8300000, guid: 9fbb3594726e8984a81305969ea80525, type: 3}
-    - {fileID: 8300000, guid: 5ed2b5ba2ecee564a98fa8097b769f71, type: 3}
-    - {fileID: 8300000, guid: 4de69ea7d096c434d92fb767b8a6a54a, type: 3}
-    - {fileID: 8300000, guid: f4af58b612284f34f8d90a75fbf4c3e9, type: 3}
-    - {fileID: 8300000, guid: 2cf5aae9ec0225a4c8c9d767fd254d01, type: 3}
     - {fileID: 8300000, guid: b9156a96aded84441830ff0071ca9905, type: 3}
+    - {fileID: 8300000, guid: f4af58b612284f34f8d90a75fbf4c3e9, type: 3}
+    - {fileID: 8300000, guid: 5ed2b5ba2ecee564a98fa8097b769f71, type: 3}
+    - {fileID: 8300000, guid: 2cf5aae9ec0225a4c8c9d767fd254d01, type: 3}
+    - {fileID: 8300000, guid: 9fbb3594726e8984a81305969ea80525, type: 3}
+    - {fileID: 8300000, guid: 4de69ea7d096c434d92fb767b8a6a54a, type: 3}
   - name: DIRT
     soundEffects:
-    - {fileID: 8300000, guid: 9fbb3594726e8984a81305969ea80525, type: 3}
-    - {fileID: 8300000, guid: b9156a96aded84441830ff0071ca9905, type: 3}
-    - {fileID: 8300000, guid: f4af58b612284f34f8d90a75fbf4c3e9, type: 3}
-    - {fileID: 8300000, guid: 2cf5aae9ec0225a4c8c9d767fd254d01, type: 3}
-    - {fileID: 8300000, guid: 5ed2b5ba2ecee564a98fa8097b769f71, type: 3}
-    - {fileID: 8300000, guid: 4de69ea7d096c434d92fb767b8a6a54a, type: 3}
+    - {fileID: 8300000, guid: 7f5b0c4f9c401564cbb78099bc93ba03, type: 3}
+    - {fileID: 8300000, guid: ee35c47b84a1c384da4d8b0132a9715d, type: 3}
+    - {fileID: 8300000, guid: 9a47aa87fb64f2c4bbefd1aeb2b1d26e, type: 3}
+    - {fileID: 8300000, guid: 36671c3afb326fe41a2a3915363e818e, type: 3}
+    - {fileID: 8300000, guid: 8180851e6bb045649a84bbd4607a4ac7, type: 3}
+    - {fileID: 8300000, guid: 06d00bd14c09b9744b36cfdcc87b0dac, type: 3}
   - name: WATER
     soundEffects:
     - {fileID: 8300000, guid: f80006b4c01e1084ca26cde6f3f691c0, type: 3}
