@@ -21,6 +21,7 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] Tile t_Red;
 
     [SerializeField] GameObject adviceNotBuild;
+    
 
     Building temporary;
     Vector3 prevPos;
@@ -191,8 +192,8 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void ExitBuildMode()
     {
+        Destroy(temporary.gameObject);
         ClearArea();
-        Destroy(temporary);
     }
 
     public enum TileType

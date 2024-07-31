@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class ArrowTower : BuildingAIMajor
 {
-    GameObject target;
-    float arrowCadency;
-    float arrowSpeed;
-    bool isThrowing;
-    Vector2 centerPos;
+    [SerializeField] GameObject target;
+    [SerializeField] GameObject arrowPrefab;
+    [SerializeField] Transform arrowPlacement;
 
+    [SerializeField] float arrowTimer = 5f;
     public float radius = 5f;
 
-    // Update is called once per frame
+    Vector2 centerPos;
+
     void Update()
     {
         centerPos = transform.position;
 
-        target = FoundCloserObject(centerPos, radius);
+        if(target != null)
+        {
+            Shoot();
+        }
+        else
+        {
+            target = FoundCloserObject(centerPos, radius);
+        }
     }
 
+    //Algorithm to find the Closer GameObject
     GameObject FoundCloserObject(Vector2 centerPos, float radius)
     {
         Collider2D[] objectsInsideRadius = Physics2D.OverlapCircleAll(centerPos, radius);
@@ -44,6 +52,25 @@ public class ArrowTower : BuildingAIMajor
     }
 
 
+    public void Shoot()
+    {
+        arrowTimer -= Time.deltaTime;
+
+        if(arrowTimer <= 0f)
+        {
+            GameObject arrow = Instantiate(arrowPrefab, arrowPlacement.position, Quaternion.identity);
+            Debug.Log("instantiated");
+            Vector3 dir = (target.transform.position - transform.position).normalized;
+
+            float angleArrow = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            arrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleArrow));
+
+            arrowTimer = 5f;
+        }
+    }
+
+
+    //Debug closer Enemies
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

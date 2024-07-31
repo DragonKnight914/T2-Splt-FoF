@@ -9,7 +9,7 @@ public abstract class BuildingAIMajor : MonoBehaviour
     Camera mainCamera;
     Life life;
 
-    void Start()
+    void Awake()
     {
         myCanvas = GetComponentInChildren<Canvas>();    
         life = GetComponent<Life>();
@@ -29,7 +29,7 @@ public abstract class BuildingAIMajor : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject)
+        if(collision.gameObject.tag == "enemies")
         {
             life.LostLife(5);
         }
