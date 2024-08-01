@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeSceneState : MonoBehaviour
 {
+    public static ChangeSceneState instance;
 
     [SerializeField] string sceneName;
     [SerializeField] string whatAppears;
@@ -18,7 +19,13 @@ public class ChangeSceneState : MonoBehaviour
     const float needHoldTime = 5f;
     bool isHolding = false;
     bool canPress = false;
+    public bool canGetOtherScenes = false;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -28,23 +35,25 @@ public class ChangeSceneState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(canPress == true)
+        if (canGetOtherScenes)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (canPress == true)
             {
-                holdTime += Time.time;
-                isHolding = true;
-
-
-                if(holdTime == needHoldTime)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    ChangeScene(sceneName);
-                    isHolding = false;
+                    holdTime += Time.time;
+                    isHolding = true;
+
+
+                    if (holdTime == needHoldTime)
+                    {
+                        ChangeScene(sceneName);
+                        isHolding = false;
+                    }
+
                 }
-                
             }
-        }    
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

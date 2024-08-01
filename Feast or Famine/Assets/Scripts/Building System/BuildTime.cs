@@ -32,12 +32,14 @@ public class BuildTime : MonoBehaviour
                 if (canBuild == false)
                 {
                     canBuild = true;
+                    ChangeSceneState.instance.canGetOtherScenes = true;
                     buildMode.interactable = true;
                     time = 120;
                 }
                 else if (canBuild == true)
                 {
                     canBuild = false;
+                    ChangeSceneState.instance.canGetOtherScenes = false;
                     buildMode.interactable = false;
                     time = 60;
                     GridBuildingSystem.instance.ExitBuildMode();
