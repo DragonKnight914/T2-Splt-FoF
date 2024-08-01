@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5236654096454700071}
   - component: {fileID: 775662484149483644}
   - component: {fileID: 4644573665964209968}
-  - component: {fileID: 6969659968678774488}
   m_Layer: 7
   m_Name: FanTower
   m_TagString: Untagged
@@ -36,6 +35,7 @@ Transform:
   - {fileID: 582467669410321811}
   - {fileID: 6665769489025553860}
   - {fileID: 3112256036162775389}
+  - {fileID: 8304698174875487379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5236654096454700071
@@ -246,7 +246,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 489066443
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 121d03d31c4663840af5094d4eafef81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
