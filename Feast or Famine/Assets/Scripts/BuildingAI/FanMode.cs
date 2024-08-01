@@ -5,21 +5,59 @@ using UnityEngine;
 public class FanMode : BuildingAIMajor
 {
     [SerializeField] GameObject airFanPrefab;
+    [SerializeField] GameObject target;
     [SerializeField] Transform airPlacement;
-    [SerializeField] Transform airPlacement2;
+
+    Building b;
+
 
     [SerializeField] float airTime = 5f;
+    
+    public float radius = 5f;
+    Vector2 centerPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        b = GetComponent<Building>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Shoot();
+
+        if(target != null && b.Placed)
+        {
+            Shoot();
+        }
+        else
+        {
+            target = FoundCloserObject(centerPos, radius);
+        }
+        
+    }
+
+    GameObject FoundCloserObject(Vector2 centerPos, float radius)
+    {
+        Collider2D[] objectsInsideRadius = Physics2D.OverlapCircleAll(centerPos, radius);
+        GameObject closerObj = null;
+
+        float distanceClosier = Mathf.Infinity;
+
+        foreach (Collider2D col in objectsInsideRadius)
+        {
+            if (col.CompareTag("enemies"))
+            {
+                float actualDistance = Vector2.Distance(centerPos, col.gameObject.transform.position);
+                if (actualDistance < distanceClosier)
+                {
+                    distanceClosier = actualDistance;
+                    closerObj = col.gameObject;
+                }
+            }
+        }
+
+        return closerObj;
     }
 
     public void Shoot()
@@ -28,11 +66,17 @@ public class FanMode : BuildingAIMajor
 
         if (airTime <= 0f)
         {
-            GameObject air1 = Instantiate(airFanPrefab, airPlacement.position, Quaternion.identity);
-            GameObject air2 = Instantiate(airFanPrefab, -airPlacement2.position, Quaternion.identity);
+            GameObject air = Instantiate(airFanPrefab, airPlacement.position, Quaternion.identity);
             Debug.Log("instantiated air");
+
+            Vector3 dir = (target.transform.position - transform.position).normalized;
+            float angleAir = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            air.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleAir));
 
             airTime = 5f;
         }
     }
+
+
 }

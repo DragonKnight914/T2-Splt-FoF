@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5236654096454700071}
   - component: {fileID: 775662484149483644}
   - component: {fileID: 4644573665964209968}
+  - component: {fileID: -4732212505634662629}
   m_Layer: 7
   m_Name: FanTower
   m_TagString: Untagged
@@ -97,6 +98,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4732212505634662629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786936644525859961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7665e1016a6cc4391f5182fb4e56e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airFanPrefab: {fileID: 1467439778097330978, guid: 7e70575385e3d9c43842b961fdb0a3b3, type: 3}
+  target: {fileID: 0}
+  airPlacement: {fileID: 8304698174875487379}
+  airTime: 5
+  radius: 5
 --- !u!1 &4927716758501015387
 GameObject:
   m_ObjectHideFlags: 0

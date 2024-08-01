@@ -9,15 +9,22 @@ public class ArrowTower : BuildingAIMajor
     [SerializeField] Transform arrowPlacement;
 
     [SerializeField] float arrowTimer = 5f;
-    public float radius = 5f;
 
+    Building b;
+
+    public float radius = 5f;
     Vector2 centerPos;
+
+    private void Start()
+    {
+        b = GetComponent<Building>();   
+    }
 
     void Update()
     {
         centerPos = transform.position;
 
-        if(target != null)
+        if(target != null && b.Placed)
         {
             Shoot();
         }
