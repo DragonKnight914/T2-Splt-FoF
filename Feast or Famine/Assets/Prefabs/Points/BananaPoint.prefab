@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5fd09cd4df88a2c4eaaebb138a08c63b, type: 3}
   - {fileID: 8300000, guid: f5c27cfb5cf97f34dad44d62cff60860, type: 3}
   Sounds: {fileID: 0}
+  points: 5
 --- !u!61 &6095295138169301997
 BoxCollider2D:
   m_ObjectHideFlags: 0

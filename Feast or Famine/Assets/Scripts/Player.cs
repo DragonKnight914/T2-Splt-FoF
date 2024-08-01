@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource PlayerSounds;
 
     //score
-    public float score;
+    public int score;
 
     [Header("VCamReferences")]
     [SerializeField] private GameObject CameraFollowGO;
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        score = PlayerPrefs.GetInt("Resources");
         //Pause Button
         if (Input.GetKeyDown(KeyCode.P) && isPaused == false)
         {
@@ -419,41 +419,8 @@ public class Player : MonoBehaviour
         inDialog = false;
     }
 
-    /*public void TripleShotPowerUp()
-    {
-        canTripleShot = true;
-        
-        StartCoroutine(TripleShotPowerDown());
-           //run method separate from main program
-    }
 
-    public IEnumerator SpeedBoostPowerDown()
-    {
-        yield return new WaitForSeconds(5.0f);
-        //wait while program runs for 5 seconds            
-        canSpeedBoost = false; //turn off triple shot
-        speed = 5.0f;
-    }
-
-    public void SpeedBoostPowerUp()
-    {
-        canSpeedBoost = true;
-        speed = 10.0f;
-        
-        StartCoroutine(SpeedBoostPowerDown());
-           //run method separate from main program
-    }*/
-
-    /*public void LifeUp()
-    {
-        if (lives < 3)
-        {
-            lives++;
-            UI.UpdateLives(lives);
-        }    
-    }
-
-    public void Damage()
+    /*public void Damage()
     {
         //Anim.SetTrigger("Hurt");
         lives--; //takes 1 life away
@@ -462,10 +429,6 @@ public class Player : MonoBehaviour
 
         if (lives < 1)
         {
-            //End Game
-            GM.gameOver = true;
-
-            UI.ShowTitleScreen();
 
             //animation
             //Instantiate(explosion, transform.position, Quaternion.identity);

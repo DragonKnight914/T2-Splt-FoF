@@ -132,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7221148535144032602}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 57.44, y: -2.11, z: -0.03991004}
   m_LocalScale: {x: 0.30173, y: 0.30173, z: 0.30173}
   m_ConstrainProportionsScale: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5fd09cd4df88a2c4eaaebb138a08c63b, type: 3}
   - {fileID: 8300000, guid: f5c27cfb5cf97f34dad44d62cff60860, type: 3}
   Sounds: {fileID: 0}
+  points: 5
 --- !u!61 &5549515423735696171
 BoxCollider2D:
   m_ObjectHideFlags: 0

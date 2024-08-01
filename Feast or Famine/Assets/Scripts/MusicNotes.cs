@@ -13,6 +13,7 @@ public class MusicNotes : MonoBehaviour
     //sfx
     [SerializeField] private AudioClip[] NoteClip = null;
     [SerializeField] private AudioSource Sounds;
+    [SerializeField] private int points; 
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,9 @@ public class MusicNotes : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            P.score += 5;
-            scoreUI.text = "Score: " + P.score;
+            P.score += points;
+            scoreUI.text = "Resources: " + P.score;
+            PlayerPrefs.SetInt("Resources", P.score);
             int soundPlayed = Random.Range(0, 5);
             Sounds.PlayOneShot(NoteClip[soundPlayed], 0.5f);
             Destroy(this.gameObject);

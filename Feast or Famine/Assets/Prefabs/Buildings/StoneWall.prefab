@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100324174075941137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.36505088, z: 2.3516881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,6 +84,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5095504540624727956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692419883346596180}
+  - component: {fileID: 3862710065421495422}
+  m_Layer: 7
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692419883346596180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5095504540624727956}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.46193978, y: 0.19134171, z: -0.33141357, w: 0.8001032}
+  m_LocalPosition: {x: -0.001, y: 0.02, z: 0.037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6042648673757095534}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: -45}
+--- !u!61 &3862710065421495422
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5095504540624727956}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
 --- !u!1 &7821312712345163011
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +172,6 @@ GameObject:
   - component: {fileID: 6042648673757095534}
   - component: {fileID: 3378921849218200535}
   - component: {fileID: -6774976110926177536}
-  - component: {fileID: -7923045635440589919}
   - component: {fileID: -7452028706327331482}
   m_Layer: 7
   m_Name: StoneWall
@@ -114,11 +190,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.451181, y: 1.451181, z: 1.451181}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2397713087739840237}
   - {fileID: 2347711952123844565}
+  - {fileID: 1692419883346596180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3378921849218200535
@@ -153,51 +230,6 @@ MonoBehaviour:
   speed: 0.5
   greenBar: {fileID: 5681777639618903894}
   redBar: {fileID: 5019619980247940831}
---- !u!61 &-7923045635440589919
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821312712345163011}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.31421262, y: 0.33598977}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7200085, y: 1.0622202}
-  m_EdgeRadius: 0
 --- !u!50 &-7452028706327331482
 Rigidbody2D:
   serializedVersion: 4
@@ -260,6 +292,18 @@ PrefabInstance:
     - target: {fileID: 485518784054736591, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485518784054736591, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.32825
+      objectReference: {fileID: 0}
+    - target: {fileID: 485518784054736591, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.32825
+      objectReference: {fileID: 0}
+    - target: {fileID: 485518784054736591, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.32825
       objectReference: {fileID: 0}
     - target: {fileID: 485518784054736591, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -371,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6334637783536148320, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6334637783536148320, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
       propertyPath: m_AnchoredPosition.y
