@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BuildTime : MonoBehaviour
 {
-    float time = 60f;
+    int time = 60;
     bool canBuild = false;
 
     [SerializeField] TextMeshProUGUI timeToSpent;
@@ -15,31 +15,43 @@ public class BuildTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeToSpent.text = time.ToString();
+        UpdateTimeText();
         buildMode.interactable = false;
+        StartCoroutine(Countdown());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator Countdown()
     {
-
-        //@TODO: IGNORE CASES AFTER THE DOT
-
-        time -= Time.deltaTime;
-        timeToSpent.text = time.ToString();
-
-        if (time <= 0f && canBuild == false)
+        while (true)
         {
-            canBuild = true;
-            buildMode.interactable = true;
-            time = 120f;
+            yield return new WaitForSeconds(1);
+            time--;
+
+            if (time <= 0)
+            {
+                if (canBuild == false)
+                {
+                    canBuild = true;
+                    buildMode.interactable = true;
+                    time = 120;
+                }
+                else if (canBuild == true)
+                {
+                    canBuild = false;
+                    buildMode.interactable = false;
+                    time = 60;
+                    GridBuildingSystem.instance.ExitBuildMode();
+                }
+            }
+
+            UpdateTimeText();
         }
-        else if (time <= 0f && canBuild == true)
-        {
-            canBuild = false;
-            buildMode.interactable = false;
-            time = 60f;
-            GridBuildingSystem.instance.ExitBuildMode();
-        }
+    }
+
+    void UpdateTimeText()
+    {
+        int minutes = time / 60;
+        int seconds = time % 60;
+        timeToSpent.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
