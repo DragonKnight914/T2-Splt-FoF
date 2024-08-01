@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -24,6 +25,8 @@ public class GridBuildingSystem : MonoBehaviour
     
 
     Building temporary;
+    Building lastBuilded;
+
     Vector3 prevPos;
     private BoundsInt prevArea;
 
@@ -77,6 +80,12 @@ public class GridBuildingSystem : MonoBehaviour
             if (temporary.CanBePlaced())
             {
                 temporary.Place();
+                
+
+                if(temporary.Placed == true)
+                {
+                    InitializeWithBuilding(temporary.gameObject);
+                }
             }
         }
     }
@@ -124,14 +133,16 @@ public class GridBuildingSystem : MonoBehaviour
     #region Building Placement
     public void InitializeWithBuilding(GameObject building)
     {
+        //@TODO: verify if the last gameObject placed is true
+
         temporary = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
         FollowBuilding();
-
     }
 
     void ClearArea()
     {
         TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
+
         FillTiles(toClear, TileType.Empty);
         tempTile.SetTilesBlock(prevArea, toClear);
     }
@@ -204,7 +215,17 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void ExitBuildMode()
     {
-        Destroy(temporary.gameObject);
+        Building[] buildings = FindObjectsOfType<Building>();
+
+        foreach(Building b in buildings)
+        {
+            if (!b.Placed)
+            {
+                Destroy(b.gameObject); 
+     
+            }
+        }
+
         ClearArea();
     }
 
