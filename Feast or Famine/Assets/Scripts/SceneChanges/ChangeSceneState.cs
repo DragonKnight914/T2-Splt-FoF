@@ -15,10 +15,12 @@ public class ChangeSceneState : MonoBehaviour
     [SerializeField] GameObject isCertainly;
     [SerializeField] TextMeshProUGUI textScene;
 
+    public BuildTime bt;
+
     float holdTime;
-    const float needHoldTime = 5f;
+    const float needHoldTime = 1f;
     bool isHolding = false;
-    bool canPress = false;
+    public bool canPress = false;
     public bool canGetOtherScenes = false;
 
 
@@ -37,15 +39,15 @@ public class ChangeSceneState : MonoBehaviour
     {
         if (canGetOtherScenes)
         {
-            if (canPress == true)
+            if (bt.canBuild)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKey(KeyCode.E))
                 {
-                    holdTime += Time.time;
+                    holdTime += Time.deltaTime;
                     isHolding = true;
 
 
-                    if (holdTime == needHoldTime)
+                    if (holdTime >= needHoldTime)
                     {
                         ChangeScene(sceneName);
                         isHolding = false;

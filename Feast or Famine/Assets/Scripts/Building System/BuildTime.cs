@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class BuildTime : MonoBehaviour
 {
-    int time = 60;
-    bool canBuild = false;
+    public int time = 120;
+    public bool canBuild = false;
 
     [SerializeField] TextMeshProUGUI timeToSpent;
     [SerializeField] Button buildMode;
@@ -16,7 +16,7 @@ public class BuildTime : MonoBehaviour
     void Start()
     {
         UpdateTimeText();
-        buildMode.interactable = false;
+        //buildMode.interactable = false;
         StartCoroutine(Countdown());
     }
 
