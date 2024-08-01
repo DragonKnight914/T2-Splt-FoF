@@ -75,7 +75,7 @@ public class GridBuildingSystem : MonoBehaviour
                 }
             }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             if (temporary.CanBePlaced())
             {
@@ -87,6 +87,16 @@ public class GridBuildingSystem : MonoBehaviour
                     InitializeWithBuilding(temporary.gameObject);
                 }
             }
+        }
+
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
+            RemoveBuilding(cellPos);
+
+
         }
     }
 
@@ -208,6 +218,29 @@ public class GridBuildingSystem : MonoBehaviour
     {
         SetTilesBlock(area, TileType.Empty, tempTile);
         SetTilesBlock(area, TileType.Green, mainTile);
+    }
+
+
+    private void RemoveBuilding(Vector3Int position)
+    {
+        Building buildinToRemove = null;
+        Building[] allBuildings = FindObjectsOfType<Building>();
+
+        foreach(Building b in allBuildings)
+        {
+            if(gridLayout.WorldToCell(b.transform.position) == position && b.Placed)
+            {
+                buildinToRemove = b;
+                break;
+            }
+        }
+
+        if(buildinToRemove != null)
+        {
+            BoundsInt buildingArea = buildinToRemove.area;
+            Destroy(buildinToRemove.gameObject);
+            SetTilesBlock(buildingArea, TileType.White, mainTile);
+        }
     }
 
     #endregion
