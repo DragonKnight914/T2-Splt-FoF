@@ -11,7 +11,7 @@ public class TDEnemy : MonoBehaviour
     public int AttackCooldownInSeconds = 3;
 
     private Rigidbody2D rb2d;
-    private Health attackTarget;
+    private Life attackTarget;
     private float attackCooldown;
 
     private void Awake()
@@ -41,10 +41,10 @@ public class TDEnemy : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.name);
-        attackTarget = collision.gameObject.GetComponent<Health>();
+        attackTarget = collision.gameObject.GetComponent<Life>();
     }
 
-    private bool TryAttack(Health target)
+    private bool TryAttack(Life target)
     {
         attackCooldown -= Time.deltaTime;
         if (attackCooldown < 0)
@@ -56,9 +56,9 @@ public class TDEnemy : MonoBehaviour
         return false;
     }
 
-    private void AttackNow(Health target)
+    private void AttackNow(Life target)
     {
-        target.TakeDamage(DamagePerAttack);
+        target.LostLife(DamagePerAttack);
         attackCooldown = AttackCooldownInSeconds;
     }
 }

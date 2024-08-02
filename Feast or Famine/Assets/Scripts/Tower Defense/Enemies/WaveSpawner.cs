@@ -78,19 +78,16 @@ public class WaveSpawner : MonoBehaviour
 public class EnemyWave
 {
     public List<EnemyWaveSpawnCount> EnemiesInWave;
-    public Transform[] SpawnLocations;
     public int SecondsBetweenSpawns = 3;
 
     public bool Complete { get; private set; } = false;
 
     private Transform target;
     private float cooldown;
-    private EnemyWaveSpawnCount enemiesToSpawn;
 
     public void SetObjective(Transform objective)
     {
         target = objective;
-        enemiesToSpawn = EnemiesInWave.FirstOrDefault();
     }
 
     public void Update(float deltaTime)
@@ -108,19 +105,12 @@ public class EnemyWave
 
     private void SpawnEnemies()
     {
-        if (enemiesToSpawn.Complete)
+        foreach (var enemy in EnemiesInWave)
         {
-            // The current enemiesToSpawn is done. Find the next enemies to spawn (that haven't completed yet)
-            enemiesToSpawn = EnemiesInWave.First(x => !x.Complete);
-        }
-
-        // Spawn each enemy for this wave at each spawn point
-        foreach (var spawnLocation in SpawnLocations)
-        {
-            if (enemiesToSpawn.Complete)
-                break;
-
-            enemiesToSpawn.SpawnEnemy(spawnLocation, target);
+            if (!enemy.Complete)
+            {
+                enemy.SpawnEnemy(target);
+            }
         }
 
         Complete = EnemiesInWave.All(x => x.Complete);
@@ -131,19 +121,20 @@ public class EnemyWave
 public class EnemyWaveSpawnCount
 {
     public TDEnemy Enemy;
+    public Transform SpawnLocation;
     public int NumberOfEnemies = 10;
 
     public bool Complete { get; private set; } = false;
 
     private int enemiesSpawned;
 
-    public TDEnemy SpawnEnemy(Transform spawnLocation, Transform target)
+    public TDEnemy SpawnEnemy(Transform target)
     {
-        var enemy = GameObject.Instantiate(Enemy, spawnLocation, spawnLocation);
+        var enemy = GameObject.Instantiate(Enemy, SpawnLocation, SpawnLocation);
         enemiesSpawned++;
 
         enemy.Objective = target;
-        enemy.transform.position = spawnLocation.position;
+        enemy.transform.position = SpawnLocation.position;
 
         if (enemiesSpawned >= NumberOfEnemies)
         {
