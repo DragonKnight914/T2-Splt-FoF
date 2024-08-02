@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6898716004541171677}
   - component: {fileID: 6748995724088345586}
   - component: {fileID: 4768305785522671406}
+  - component: {fileID: 1509488343492494651}
   m_Layer: 11
   m_Name: TDGazelleSouth
   m_TagString: enemies
@@ -175,3 +176,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.97, y: 1.9010925}
   m_EdgeRadius: 0
+--- !u!95 &1509488343492494651
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752648916845275692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1bb633baa4b51774e8283d2cbe41d45d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

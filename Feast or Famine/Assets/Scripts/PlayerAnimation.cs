@@ -95,33 +95,33 @@ namespace FSR
                 ChangeAnimationState(PLAYER_IDLEL);
             else
             {
-                if (P.isGrounded() && !P.isDashing && !isAulosPlaying && rb2d.velocity.y == 0f && !canLand)
-                {
+                //if (P.isGrounded())
+                //{
                     
                     if (xAxis > 0)
                     {
                         ChangeAnimationState(PLAYER_WALKR);
                         //fSR_Player.step();
                     }
-                    else if (xAxis < 0)
+                    if (xAxis < 0)
                     {
                         ChangeAnimationState(PLAYER_WALKL);
                         //fSR_Player.step();
                     }
-                    else if (P.faceRight && xAxis == 0)
+                    if (P.faceRight && xAxis == 0)
                     {
                         ChangeAnimationState(PLAYER_IDLER);
                     }
-                    else if (!P.faceRight && xAxis == 0)
+                    if (!P.faceRight && xAxis == 0)
                     {
                         ChangeAnimationState(PLAYER_IDLEL);
                     }
-                }
+                //}
 
-                if (P.isDashing)
+                /*if (P.isDashing)
                 {
                     ChangeAnimationState(PLAYER_DASH);
-                }
+                }*/
 
                 //-------------------------------------
                 //Check player trying to jump

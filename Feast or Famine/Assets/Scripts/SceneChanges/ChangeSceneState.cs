@@ -12,6 +12,7 @@ public class ChangeSceneState : MonoBehaviour
     [SerializeField] string sceneName;
     [SerializeField] string whatAppears;
 
+    [SerializeField] GameObject fadeOut;
     [SerializeField] GameObject isCertainly;
     [SerializeField] TextMeshProUGUI textScene;
 
@@ -49,7 +50,7 @@ public class ChangeSceneState : MonoBehaviour
 
                     if (holdTime >= needHoldTime)
                     {
-                        ChangeScene(sceneName);
+                        StartCoroutine(ChangeScene(sceneName));
                         isHolding = false;
                     }
 
@@ -77,9 +78,11 @@ public class ChangeSceneState : MonoBehaviour
         }
     }
 
-    private void ChangeScene(string nameScene)
+    public IEnumerator ChangeScene(string nameScene)
     {
+        fadeOut.SetActive(true);
         PlayerPrefs.Save();
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(nameScene);
     }
 }

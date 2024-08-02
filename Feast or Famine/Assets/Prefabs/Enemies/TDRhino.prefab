@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4865292593761369646}
   - component: {fileID: 4162807509667955250}
   - component: {fileID: 475263814349077080}
+  - component: {fileID: 8131543920284251038}
   m_Layer: 11
   m_Name: TDRhino
   m_TagString: enemies
@@ -175,3 +176,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4296513, y: 1.6259916}
   m_EdgeRadius: 0
+--- !u!95 &8131543920284251038
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121506907761082367}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 341bacac4f001624d8e60d136db7715e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

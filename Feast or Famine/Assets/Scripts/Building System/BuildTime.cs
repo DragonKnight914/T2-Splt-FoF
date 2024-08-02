@@ -10,6 +10,8 @@ public class BuildTime : MonoBehaviour
     public bool canBuild = false;
 
     [SerializeField] TextMeshProUGUI timeToSpent;
+    [SerializeField] GameObject buildText;
+    [SerializeField] GameObject defenseText;
     [SerializeField] Button buildMode;
 
     // Start is called before the first frame update
@@ -34,6 +36,8 @@ public class BuildTime : MonoBehaviour
                     canBuild = true;
                     ChangeSceneState.instance.canGetOtherScenes = true;
                     buildMode.interactable = true;
+                    buildText.SetActive(true);
+                    defenseText.SetActive(false);
                     time = 120;
                 }
                 else if (canBuild == true)
@@ -41,6 +45,8 @@ public class BuildTime : MonoBehaviour
                     canBuild = false;
                     ChangeSceneState.instance.canGetOtherScenes = false;
                     buildMode.interactable = false;
+                    buildText.SetActive(false);
+                    defenseText.SetActive(true);
                     time = 60;
                     GridBuildingSystem.instance.ExitBuildMode();
                 }

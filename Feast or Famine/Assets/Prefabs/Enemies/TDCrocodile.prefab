@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5119111421828377774}
   - component: {fileID: 5578202636993708255}
   - component: {fileID: 8490876883616115009}
+  - component: {fileID: 6115145374022555722}
   m_Layer: 11
   m_Name: TDCrocodile
   m_TagString: enemies
@@ -175,3 +176,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0208447, y: 1.2800785}
   m_EdgeRadius: 0
+--- !u!95 &6115145374022555722
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47318731627518099}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc85db6e79cad1b4d8410beeda0bdc3e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
