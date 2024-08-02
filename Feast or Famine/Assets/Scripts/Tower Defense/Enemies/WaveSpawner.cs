@@ -8,58 +8,32 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     public Transform EnemyTargetObjective;
-    public int SecondsBetweenWaves = 30;
+    public int SecondsBetweenSpawns = 3;
     public BuildTime bt;
-    public List<EnemyWave> Waves;
-    public bool AllWavesSpawned { get; private set; } = false;
+    public List<EnemyWaveSpawnCount> EnemiesInWave;
 
-    private float waveCooldown;
-    private EnemyWave currentWave;
+
+    private float cooldown;
+    public bool AllWavesSpawned { get; private set; } = false;
 
 
     void Start()
     {
-        foreach (EnemyWave wave in Waves)
-        {
-            wave.SetObjective(EnemyTargetObjective);
-        }
-
-        currentWave = Waves.FirstOrDefault();
     }
 
     void Update()
     {
         if (bt.canBuild == false)
         {
-                if (AllWavesSpawned)
+            if (!AllWavesSpawned)
+            {
+                cooldown -= Time.deltaTime;
+                if (cooldown <= 0)
                 {
-                    return;
+                    cooldown = SecondsBetweenSpawns;
+                    SpawnEnemies();
                 }
-
-                if (!currentWave.Complete)
-                {
-                    // The current wave is active and can spawn enemies
-                    currentWave.Update(Time.deltaTime);
-                }
-                else
-                {
-                    // Wave is done spawning enemies, now wait till creating the next wave
-                    waveCooldown -= Time.deltaTime;
-
-                    if (waveCooldown < 0)
-                    {
-                        waveCooldown = SecondsBetweenWaves;
-
-                        // Select the next wave
-                        Waves.Remove(currentWave);
-                        currentWave = Waves.FirstOrDefault();
-
-                        if (currentWave == null)
-                        {
-                            AllWavesSpawned = true;
-                        }
-                    }
-                }
+            }
         }
         else if (bt.canBuild)
         {
@@ -70,38 +44,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
     }
-    
-}
 
-
-[Serializable]
-public class EnemyWave
-{
-    public List<EnemyWaveSpawnCount> EnemiesInWave;
-    public int SecondsBetweenSpawns = 3;
-
-    public bool Complete { get; private set; } = false;
-
-    private Transform target;
-    private float cooldown;
-
-    public void SetObjective(Transform objective)
-    {
-        target = objective;
-    }
-
-    public void Update(float deltaTime)
-    {
-        if (Complete)
-            return;
-
-        cooldown -= deltaTime;
-        if (cooldown <= 0)
-        {
-            cooldown = SecondsBetweenSpawns;
-            SpawnEnemies();
-        }
-    }
 
     private void SpawnEnemies()
     {
@@ -109,28 +52,29 @@ public class EnemyWave
         {
             if (!enemy.Complete)
             {
-                enemy.SpawnEnemy(target);
+                enemy.SpawnEnemy(EnemyTargetObjective);
             }
         }
 
-        Complete = EnemiesInWave.All(x => x.Complete);
+        AllWavesSpawned = EnemiesInWave.All(x => x.Complete);
     }
 }
 
 [Serializable]
 public class EnemyWaveSpawnCount
 {
-    public TDEnemy Enemy;
+    public TDEnemy[] Enemies;
     public Transform SpawnLocation;
     public int NumberOfEnemies = 10;
 
     public bool Complete { get; private set; } = false;
 
     private int enemiesSpawned;
+    private int enemiesIndex = 0;
 
     public TDEnemy SpawnEnemy(Transform target)
     {
-        var enemy = GameObject.Instantiate(Enemy, SpawnLocation, SpawnLocation);
+        var enemy = GameObject.Instantiate(Enemies[enemiesIndex], SpawnLocation, SpawnLocation);
         enemiesSpawned++;
 
         enemy.Objective = target;
@@ -139,6 +83,12 @@ public class EnemyWaveSpawnCount
         if (enemiesSpawned >= NumberOfEnemies)
         {
             Complete = true;
+        }
+
+        enemiesIndex++;
+        if (enemiesIndex >= Enemies.Length)
+        {
+            enemiesIndex = 0;
         }
 
         return enemy;
