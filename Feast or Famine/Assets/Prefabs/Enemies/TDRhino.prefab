@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objective: {fileID: 3100334017345866939, guid: 7466844cbc1c67849a8da32fafd4f4c1, type: 3}
   Speed: 0.5
-  DamagePerAttack: 10
+  DamagePerAttack: 15
   AttackCooldownInSeconds: 2
 --- !u!50 &4162807509667955250
 Rigidbody2D:
