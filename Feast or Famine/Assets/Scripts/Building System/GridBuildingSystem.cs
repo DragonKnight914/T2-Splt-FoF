@@ -41,10 +41,10 @@ public class GridBuildingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tileBases.Add(TileType.Empty, null);
-        tileBases.Add(TileType.White, t_White); 
-        tileBases.Add(TileType.Green, t_Green);
-        tileBases.Add(TileType.Red, t_Red);
+        AddTileBase(TileType.Empty, null);
+        AddTileBase(TileType.White, t_White); 
+        AddTileBase(TileType.Green, t_Green);
+        AddTileBase(TileType.Red, t_Red);
     }
 
     // Update is called once per frame
@@ -238,6 +238,9 @@ public class GridBuildingSystem : MonoBehaviour
         if(buildinToRemove != null)
         {
             BoundsInt buildingArea = buildinToRemove.area;
+
+            //Try it too
+            PlayerPrefs.SetInt("Resources", PlayerPrefs.GetInt("Resources") + buildinToRemove.resourceCoast);
             Destroy(buildinToRemove.gameObject);
             SetTilesBlock(buildingArea, TileType.White, mainTile);
         }
@@ -260,6 +263,14 @@ public class GridBuildingSystem : MonoBehaviour
         }
 
         ClearArea();
+    }
+
+    void AddTileBase(TileType type, TileBase tile)
+    {
+        if (!tileBases.ContainsKey(type))
+        {
+            tileBases.Add(type, tile);
+        }
     }
 
     public enum TileType
