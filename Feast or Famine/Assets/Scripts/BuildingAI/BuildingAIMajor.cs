@@ -36,9 +36,16 @@ public abstract class BuildingAIMajor : MonoBehaviour
         {
             if (collision.gameObject.tag == "enemies")
             {
+                Debug.Log("LoseLife");
                 life.LostLife(5);
             }
-        }
 
+            //Can Erase if unnecessary
+            if (collision.gameObject.tag == "Player")
+            {
+                                var player = collision.gameObject;
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+            }
+        }
     }
 }

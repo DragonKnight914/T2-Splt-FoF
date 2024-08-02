@@ -6,6 +6,7 @@ public class Building : MonoBehaviour
 {
     public bool Placed { get; private set; }
     public BoundsInt area;
+    public int resourceCoast;
     #region Build Method
 
     public void Update()
@@ -23,14 +24,25 @@ public class Building : MonoBehaviour
 
     public bool CanBePlaced()
     {
-        Vector3Int positionInt = GridBuildingSystem.instance.gridLayout.LocalToCell(transform.position);
-        BoundsInt areaTemp = area;
-        areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.instance.CanTakeArea(areaTemp))
+        int howManyResources = PlayerPrefs.GetInt("Resources");
+
+        if(howManyResources >= resourceCoast)
         {
-            return true;
+            Vector3Int positionInt = GridBuildingSystem.instance.gridLayout.LocalToCell(transform.position);
+            BoundsInt areaTemp = area;
+            areaTemp.position = positionInt;
+
+            if (GridBuildingSystem.instance.CanTakeArea(areaTemp))
+            {
+
+                //Try it out
+                PlayerPrefs.SetInt("Resources", howManyResources - resourceCoast);
+                PlayerPrefs.Save();
+                return true;
+            }
         }
+
 
         return false;
     }
