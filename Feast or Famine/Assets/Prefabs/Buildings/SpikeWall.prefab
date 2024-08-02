@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 1993694988380197409}
   - component: {fileID: -8977251338416427974}
   - component: {fileID: -981341834843164994}
+  - component: {fileID: 8313109046011443677}
   m_Layer: 7
   m_Name: SpikeWall
   m_TagString: Untagged
@@ -257,6 +258,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8313109046011443677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226522169809926689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcfb025ebaf0de40b3e7b66cce03288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3242347252403387991
 PrefabInstance:
   m_ObjectHideFlags: 0
