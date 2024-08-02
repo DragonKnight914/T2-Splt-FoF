@@ -7,11 +7,12 @@ public class Arrow : MonoBehaviour
 {
     Rigidbody2D rb;
     float lifetime = 5f;
+    public float arrowSpeed;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * 5f;
+        rb.velocity = transform.right * arrowSpeed;
         Destroy(gameObject, lifetime);
     }
 

@@ -9,6 +9,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public Transform EnemyTargetObjective;
     public int SecondsBetweenWaves = 30;
+    public BuildTime bt;
     public List<EnemyWave> Waves;
     public bool AllWavesSpawned { get; private set; } = false;
 
@@ -28,37 +29,50 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        if (AllWavesSpawned)
+        if (bt.canBuild == false)
         {
-            return;
-        }
-
-        if (!currentWave.Complete)
-        {
-            // The current wave is active and can spawn enemies
-            currentWave.Update(Time.deltaTime);
-        }
-        else
-        {
-            // Wave is done spawning enemies, now wait till creating the next wave
-            waveCooldown -= Time.deltaTime;
-
-            if (waveCooldown < 0)
-            {
-                waveCooldown = SecondsBetweenWaves;
-
-                // Select the next wave
-                Waves.Remove(currentWave);
-                currentWave = Waves.FirstOrDefault();
-
-                if (currentWave == null)
+                if (AllWavesSpawned)
                 {
-                    AllWavesSpawned = true;
+                    return;
                 }
+
+                if (!currentWave.Complete)
+                {
+                    // The current wave is active and can spawn enemies
+                    currentWave.Update(Time.deltaTime);
+                }
+                else
+                {
+                    // Wave is done spawning enemies, now wait till creating the next wave
+                    waveCooldown -= Time.deltaTime;
+
+                    if (waveCooldown < 0)
+                    {
+                        waveCooldown = SecondsBetweenWaves;
+
+                        // Select the next wave
+                        Waves.Remove(currentWave);
+                        currentWave = Waves.FirstOrDefault();
+
+                        if (currentWave == null)
+                        {
+                            AllWavesSpawned = true;
+                        }
+                    }
+                }
+        }
+        else if (bt.canBuild)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemies");
+            for (int j = 0; j < enemies.Length; j++)
+            {
+                Destroy(enemies[j]);
             }
         }
     }
+    
 }
+
 
 [Serializable]
 public class EnemyWave

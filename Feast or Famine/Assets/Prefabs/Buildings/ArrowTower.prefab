@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6624907235556564449}
   - component: {fileID: 1363834477250348205}
   - component: {fileID: -205748246082551317}
+  - component: {fileID: 5507860433845000145}
   - component: {fileID: 8749976739439942101}
   m_Layer: 7
   m_Name: ArrowTower
@@ -70,6 +71,23 @@ MonoBehaviour:
   speed: 0.5
   greenBar: {fileID: 6832554354476223426}
   redBar: {fileID: 6170745755956333131}
+--- !u!114 &5507860433845000145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223945607399249198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f18a20e43c3df345991744934246a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  arrowPrefab: {fileID: 1467439778097330978, guid: 81fdd9fbe3a220743b4d45f513dd88ef, type: 3}
+  arrowPlacement: {fileID: 5138788128636116377}
+  arrowTimer: 5
+  radius: 5
 --- !u!50 &8749976739439942101
 Rigidbody2D:
   serializedVersion: 4
@@ -356,6 +374,14 @@ PrefabInstance:
     - target: {fileID: 2695465230123230412, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
       propertyPath: m_SortingLayerID
       value: 489066443
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662796293104137834, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
+      propertyPath: m_Color.a
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153482949188827107, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
+      propertyPath: m_Color.a
+      value: 0.3254902
       objectReference: {fileID: 0}
     - target: {fileID: 4880370999951000976, guid: f7f6283d0f4d62b40b7f0ecc20b997a7, type: 3}
       propertyPath: m_AnchorMax.x
