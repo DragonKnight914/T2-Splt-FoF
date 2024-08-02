@@ -37,7 +37,8 @@ public class Building : MonoBehaviour
             {
 
                 //Try it out
-                PlayerPrefs.SetInt("Resources", howManyResources - resourceCoast); 
+                PlayerPrefs.SetInt("Resources", howManyResources - resourceCoast);
+                PlayerPrefs.Save();
                 return true;
             }
         }
