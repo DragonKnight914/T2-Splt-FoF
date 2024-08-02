@@ -383,12 +383,12 @@ public class Player : MonoBehaviour
           
         if (Physics2D.BoxCast(transform.position - transform.up * castDistance, boxSize, 0f, Vector2.down, 0f, groundMask))
         {
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
             return true;
         }
         else
         {
-            Debug.Log("Not Grounded");
+            //Debug.Log("Not Grounded");
             return false;
         }
     }

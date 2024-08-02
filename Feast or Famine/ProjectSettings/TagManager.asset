@@ -8,6 +8,7 @@ TagManager:
   - GRASS
   - enemies
   - WATER
+  - DIRT
   layers:
   - Default
   - TransparentFX
