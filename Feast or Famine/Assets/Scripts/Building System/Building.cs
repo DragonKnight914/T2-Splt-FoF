@@ -6,7 +6,7 @@ public class Building : MonoBehaviour
 {
     public bool Placed { get; private set; }
     public BoundsInt area;
-    public int resourceCoast;
+    public int resourceCost;
     #region Build Method
 
     public void Update()
@@ -27,7 +27,7 @@ public class Building : MonoBehaviour
 
         int howManyResources = PlayerPrefs.GetInt("Resources");
 
-        if(howManyResources >= resourceCoast)
+        if(howManyResources >= resourceCost)
         {
             Vector3Int positionInt = GridBuildingSystem.instance.gridLayout.LocalToCell(transform.position);
             BoundsInt areaTemp = area;
@@ -37,7 +37,7 @@ public class Building : MonoBehaviour
             {
 
                 //Try it out
-                PlayerPrefs.SetInt("Resources", howManyResources - resourceCoast);
+                PlayerPrefs.SetInt("Resources", howManyResources - resourceCost);
                 PlayerPrefs.Save();
                 return true;
             }

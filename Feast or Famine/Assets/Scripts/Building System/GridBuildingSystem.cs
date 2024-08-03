@@ -240,7 +240,7 @@ public class GridBuildingSystem : MonoBehaviour
             BoundsInt buildingArea = buildinToRemove.area;
 
             //Try it too
-            PlayerPrefs.SetInt("Resources", PlayerPrefs.GetInt("Resources") + buildinToRemove.resourceCoast); 
+            PlayerPrefs.SetInt("Resources", PlayerPrefs.GetInt("Resources") + buildinToRemove.resourceCost); 
             PlayerPrefs.Save();
             Destroy(buildinToRemove.gameObject);
             SetTilesBlock(buildingArea, TileType.White, mainTile);

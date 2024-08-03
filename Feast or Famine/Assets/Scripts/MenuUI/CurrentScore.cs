@@ -19,7 +19,7 @@ public class CurrentScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //score.text = "Resources: " + PlayerPrefs.GetInt("Resources").ToString("");
+        score.text = "Resources: " + PlayerPrefs.GetInt("Resources").ToString("");
         if (isAtBase)
         {
             if (PlayerPrefs.GetInt("Resources") > 0)

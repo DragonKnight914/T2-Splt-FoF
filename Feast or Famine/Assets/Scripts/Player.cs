@@ -420,26 +420,8 @@ public class Player : MonoBehaviour
     }
 
 
-    /*public void Damage()
+    public void Damage()
     {
-        //Anim.SetTrigger("Hurt");
-        lives--; //takes 1 life away
-        //UI.UpdateLives(lives); //actual parameter
-        Debug.Log("" + lives);
-
-        if (lives < 1)
-        {
-
-            //animation
-            //Instantiate(explosion, transform.position, Quaternion.identity);
-            AudioSource.PlayClipAtPoint(DeathClip, Camera.main.transform.position);
-
-            //remove
-            Destroy(this.gameObject);
-
-            
-        }
-
-        
-    }*/
+        anim.SetTrigger("Hurt");
+    }
 }

@@ -214,6 +214,7 @@ MonoBehaviour:
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 1, y: 1, z: 1}
+  resourceCost: 10
 --- !u!114 &-8977251338416427974
 MonoBehaviour:
   m_ObjectHideFlags: 0
