@@ -31,6 +31,7 @@ namespace FSR
         const string PLAYER_AULOS = "AulosAnim";
         const string PLAYER_LAND = "LandingAnim";
         const string PLAYER_FALL = "FallingAnim";
+        const string PLAYER_HURT = "Damage";
 
         //[SerializeField] private FSR_Player fSR_Player;
 
@@ -89,12 +90,12 @@ namespace FSR
 
         private void FixedUpdate()
         {
-            if (P.faceRight && P.inDialog)
-                ChangeAnimationState(PLAYER_IDLER);
-            if (!P.faceRight && P.inDialog)
-                ChangeAnimationState(PLAYER_IDLEL);
-            else
-            {
+            //if (P.faceRight && P.inDialog)
+                //ChangeAnimationState(PLAYER_IDLER);
+            //if (!P.faceRight && P.inDialog)
+                //ChangeAnimationState(PLAYER_IDLEL);
+            //else
+            //{
                 //if (P.isGrounded())
                 //{
                     
@@ -167,7 +168,7 @@ namespace FSR
                         Invoke("LandingComplete", landingTime); 
                     }
                 }
-            }
+            //}
         }
 
         void AulosComplete()

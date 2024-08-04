@@ -32,7 +32,7 @@ public class MusicNotes : MonoBehaviour
         if (collision.tag == "Player")
         {
             P.score += points;
-            scoreUI.text = "Resources: " + P.score;
+            scoreUI.text = ":" + P.score;
             PlayerPrefs.SetInt("Resources", P.score);
             int soundPlayed = Random.Range(0, 5);
             Sounds.PlayOneShot(NoteClip[soundPlayed], 0.5f);

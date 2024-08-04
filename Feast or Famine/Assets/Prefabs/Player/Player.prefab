@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 4731124755985304830}
   - component: {fileID: 3408976354565283786}
   - component: {fileID: 6205308250597699771}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ Transform:
   - {fileID: 4125019401641575486}
   - {fileID: 8084634663016357030}
   - {fileID: 7117129182432268937}
+  - {fileID: 4598860931443416441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3119981387854680653
@@ -304,6 +305,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lives: 3
+  sprite: {fileID: 3119981387854680653}
+  canBeDamaged: 1
   canTripleShot: 0
   canSpeedBoost: 0
   lyreAnim: {fileID: 0}
@@ -317,7 +320,7 @@ MonoBehaviour:
   DashClip: {fileID: 8300000, guid: a349e4860da8d95489c2756f5aa56587, type: 3}
   JumpClip: {fileID: 8300000, guid: 483fa6d6c29056d42b5fc8bf9d9c9112, type: 3}
   PlayerSounds: {fileID: 5783579087794807181}
-  score: 0
+  score: 200
   CameraFollowGO: {fileID: 0}
   isPaused: 0
   PauseMenu: {fileID: 0}
@@ -350,7 +353,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0036634803, y: 1.3216449}
@@ -611,3 +614,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8008779019452963803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4598860931443416441}
+  - component: {fileID: 8522799381860600689}
+  m_Layer: 2
+  m_Name: CollisionDetection
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4598860931443416441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8008779019452963803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6408017542448310966}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8522799381860600689
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8008779019452963803}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: bb4aacd979706424b822084ce4286543, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 16311
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0036634803, y: 1.3216449}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.2}
+    oldSize: {x: 3.84, y: 3.84}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0231618, y: 2.6400316}
+  m_EdgeRadius: 0

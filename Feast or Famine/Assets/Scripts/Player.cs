@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
 
     //Lives
     [SerializeField] public int lives = 3;
+    public SpriteRenderer sprite;
+    public bool canBeDamaged;
 
 
     //Powerups
@@ -422,6 +424,32 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        anim.SetTrigger("Hurt");
+        if (canBeDamaged)
+            StartCoroutine(DamageFlash());
+        //anim.SetTrigger("Hurt");
+        /*float timer = 0;
+        anim.SetBool("Hurt", true);
+        timer += Time.deltaTime;
+        if (timer >= anim.GetCurrentAnimatorStateInfo(0).length)
+            anim.SetBool("Hurt", false);*/
+    }
+
+    public IEnumerator DamageFlash()
+    {
+        canBeDamaged = false;
+        sprite.color = new Color(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = new Color(255, 255, 255, 255);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = new Color(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = new Color(255, 255, 255, 255);
+        canBeDamaged = true;
+        //anim.SetTrigger("Hurt");
+        /*float timer = 0;
+        anim.SetBool("Hurt", true);
+        timer += Time.deltaTime;
+        if (timer >= anim.GetCurrentAnimatorStateInfo(0).length)
+            anim.SetBool("Hurt", false);*/
     }
 }
