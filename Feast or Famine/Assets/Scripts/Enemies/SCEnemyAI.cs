@@ -17,6 +17,10 @@ public class SCEnemyAI : MonoBehaviour
     //Lose Resources Mechanic
     private Player P;
 
+    [Header("GroundCheck")]
+    [SerializeField] private LayerMask groundMask;
+    public Vector2 boxSize;
+    public float castDistance;
 
     //sfx
     [SerializeField] private AudioClip[] clip = null;
@@ -48,19 +52,26 @@ public class SCEnemyAI : MonoBehaviour
         }
         else
             anim.SetBool("isIdle", true);
+
     }
 
-    private void OnCollisionEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Debug.Log("Colliding");
         if (collision.tag == "Player")
         {
             Debug.Log("Colliding");
-            P.score -= pointLoss;
-            P.Damage();
-            //scoreUI.text = "Resources: " + P.score;
-            PlayerPrefs.SetInt("Resources", P.score);
-            int soundPlayed = Random.Range(0, 5);
-            Sounds.PlayOneShot(clip[soundPlayed], 0.5f);
+            if (P.canBeDamaged)
+            {
+                P.score -= pointLoss;
+                P.Damage();
+            
+                //scoreUI.text = "Resources: " + P.score;
+                PlayerPrefs.SetInt("Resources", P.score);
+            }
+            //int soundPlayed = Random.Range(0, 5);
+            //Sounds.PlayOneShot(clip[soundPlayed], 0.5f);
+            //Destroy(this.gameObject);
         }
 
  
@@ -72,7 +83,7 @@ public class SCEnemyAI : MonoBehaviour
         float randomTime = Random.Range(1.0f, 3.0f);
         int moveDirection = Random.Range(0, 2);
         yield return new WaitForSeconds(randomTime);
-        Debug.Log(moveDirection);
+        //Debug.Log(moveDirection);
         //Debug.Log(direction);
         //Randoms the direction the AI moves
         isMoving = true;
@@ -93,7 +104,7 @@ public class SCEnemyAI : MonoBehaviour
                 Direction();
             }
         }
-        Debug.Log("Moving");
+        //Debug.Log("Moving");
         float walkTime = Random.Range(1.0f, 3.0f);
         yield return new WaitForSeconds(walkTime);
         isMoving = false;

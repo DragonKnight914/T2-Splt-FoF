@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7752172792174886589}
   - component: {fileID: 7138701266451311625}
   - component: {fileID: 2680804403343150332}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SCMonkey
   m_TagString: enemies
   m_Icon: {fileID: 0}
@@ -103,6 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   jumpHeight: 10
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  boxSize: {x: 0, y: 0}
+  castDistance: 0
   clip: []
   pointLoss: 7
 --- !u!50 &3454503729591399048
@@ -144,10 +149,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8183
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

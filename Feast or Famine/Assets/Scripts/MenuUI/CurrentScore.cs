@@ -13,13 +13,13 @@ public class CurrentScore : MonoBehaviour
     void Start()
     {
         score = GetComponent<TMP_Text>();
-        score.text = "Resources: " + PlayerPrefs.GetInt("Resources").ToString("");
+        score.text = ":" + PlayerPrefs.GetInt("Resources").ToString("");
     }
 
     // Update is called once per frame
     void Update()
     {
-        score.text = "Resources: " + PlayerPrefs.GetInt("Resources").ToString("");
+        score.text = ":" + PlayerPrefs.GetInt("Resources").ToString("");
         if (isAtBase)
         {
             if (PlayerPrefs.GetInt("Resources") > 0)

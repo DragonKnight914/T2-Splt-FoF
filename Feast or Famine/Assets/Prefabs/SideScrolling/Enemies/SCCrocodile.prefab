@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7752172792174886589}
   - component: {fileID: 7138701266451311625}
   - component: {fileID: 1464797721242417893}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SCCrocodile
   m_TagString: enemies
   m_Icon: {fileID: 0}
@@ -103,6 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 9
   jumpHeight: 4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  boxSize: {x: 0, y: 0}
+  castDistance: 0
   clip: []
   pointLoss: 2
 --- !u!50 &3454503729591399048
@@ -144,10 +149,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8183
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -164,7 +169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11577988, y: -0.05417061}
+  m_Offset: {x: -0.55725, y: -0.05417061}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,7 +180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.4119797, y: 1.2465782}
+  m_Size: {x: 4.1440945, y: 1.2465782}
   m_EdgeRadius: 0
 --- !u!95 &7138701266451311625
 Animator:
