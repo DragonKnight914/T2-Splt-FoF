@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7752172792174886589}
   - component: {fileID: 7138701266451311625}
   - component: {fileID: 9201037740540383091}
+  - component: {fileID: 6847224167838449980}
   m_Layer: 13
   m_Name: SCElephant
   m_TagString: enemies
@@ -213,9 +214,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6489871575226735416, guid: d549c5ec476ca1340b2cbf159c62b810, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9e431e12b33dfb245b5f30b782c392de, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -224,7 +225,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -299,3 +300,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6847224167838449980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909619765901592161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94049fde8d3013c48a17f28d2102a07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDelay: 2
+  maxDelay: 10
+  minPitch: 0.75
+  maxPitch: 1.33
+  AnimalAudioSource: {fileID: 9201037740540383091}
