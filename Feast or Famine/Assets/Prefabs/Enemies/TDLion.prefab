@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: 982054524, guid: 2e103c3b7ebb7da4d8475c33014fe192, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 0.5}
@@ -104,6 +104,7 @@ MonoBehaviour:
   Speed: 0.7
   DamagePerAttack: 10
   AttackCooldownInSeconds: 2
+  health: 6
 --- !u!50 &3538220017734992714
 Rigidbody2D:
   serializedVersion: 4

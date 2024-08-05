@@ -34,8 +34,8 @@ public class MusicNotes : MonoBehaviour
             P.score += points;
             scoreUI.text = ":" + P.score;
             PlayerPrefs.SetInt("Resources", P.score);
-            int soundPlayed = Random.Range(0, 5);
-            Sounds.PlayOneShot(NoteClip[soundPlayed], 0.5f);
+            //int soundPlayed = Random.Range(0, 5);
+            Sounds.PlayOneShot(NoteClip[0], 0.5f);
             Destroy(this.gameObject);
         }
 

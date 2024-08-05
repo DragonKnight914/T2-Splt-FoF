@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/Mel/M - BaseArea 2.unity
     guid: 87dc1157d66dbe742af49df474b19f43
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game/Mel/M - Old Scenes/M - EastPlatformArea.unity
     guid: 6cefa6913b897224e9791bed7e912a90
   - enabled: 1
@@ -28,7 +28,7 @@ EditorBuildSettings:
     guid: 6abf83a2149d4794b9bee8dfee8aa786
   - enabled: 1
     path: Assets/Scenes/Game/Mel/M - NorthPlatformArea 1.unity
-    guid: 7905f983aa8462847a53b45bfe4ebd39
+    guid: 6f9b2dd37d14b794f876905f8aa68873
   - enabled: 1
     path: Assets/Scenes/Game/Mel/M - EastPlatformArea 1.unity
     guid: f27582b6f42bcef4aa8ef526883bee75

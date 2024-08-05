@@ -56,6 +56,7 @@ public class Building : MonoBehaviour
         Placed = true;
 
         GridBuildingSystem.instance.TakeArea(areaTemp);
+        DontDestroyOnLoad(gameObject);
     }
 
     #endregion

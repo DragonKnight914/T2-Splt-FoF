@@ -7,6 +7,7 @@ public class Arrow : MonoBehaviour
 {
     Rigidbody2D rb;
     float lifetime = 5f;
+    public int arrowDamage = 2;
     public float arrowSpeed;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class Arrow : MonoBehaviour
         if (collision.gameObject.tag == "enemies")
         {
             //Temporary
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<TDEnemy>().Damage(arrowDamage);
             Destroy(this.gameObject);
         }
     }

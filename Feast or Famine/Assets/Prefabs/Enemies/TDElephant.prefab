@@ -104,6 +104,7 @@ MonoBehaviour:
   Speed: 0.25
   DamagePerAttack: 20
   AttackCooldownInSeconds: 2
+  health: 10
 --- !u!50 &924822549826103004
 Rigidbody2D:
   serializedVersion: 4

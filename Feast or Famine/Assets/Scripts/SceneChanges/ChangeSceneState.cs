@@ -18,7 +18,7 @@ public class ChangeSceneState : MonoBehaviour
 
     public BuildTime bt;
 
-    float holdTime;
+    public float holdTime;
     const float needHoldTime = 1f;
     bool isHolding = false;
     public bool canPress = false;
@@ -38,19 +38,29 @@ public class ChangeSceneState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canGetOtherScenes)
+        if(canPress)
         {
-            if (bt.canBuild)
+            if (canGetOtherScenes)
             {
-                if (Input.GetKey(KeyCode.E))
+                if (bt.canBuild)
                 {
-                    holdTime += Time.deltaTime;
-                    isHolding = true;
-
-
-                    if (holdTime >= needHoldTime)
+                    
+                    if (Input.GetKey(KeyCode.E))
                     {
-                        StartCoroutine(ChangeScene(sceneName));
+                        holdTime += Time.deltaTime;
+                        isHolding = true;
+
+
+                        if (holdTime >= needHoldTime)
+                        {
+                            StartCoroutine(ChangeScene(sceneName));
+                            isHolding = false;
+                        }
+
+                    }
+                    if (Input.GetKeyUp(KeyCode.E))
+                    {
+                        holdTime = 0;
                         isHolding = false;
                     }
 
@@ -59,7 +69,7 @@ public class ChangeSceneState : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
@@ -69,7 +79,7 @@ public class ChangeSceneState : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -81,7 +91,10 @@ public class ChangeSceneState : MonoBehaviour
     public IEnumerator ChangeScene(string nameScene)
     {
         fadeOut.SetActive(true);
-        PlayerPrefs.Save();
+        //PlayerPrefs.Save();
+        /*string activeScene = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("BaseLevelSaved", activeScene);*/
+        Debug.Log(sceneName);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(nameScene);
     }

@@ -9,6 +9,7 @@ TagManager:
   - enemies
   - WATER
   - DIRT
+  - Food
   layers:
   - Default
   - TransparentFX

@@ -154,11 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 0}
   NoteClip:
-  - {fileID: 8300000, guid: 645b861048180124180cd6964d75a9ab, type: 3}
-  - {fileID: 8300000, guid: 76bb7dcd28b229e47b9cc5672db6906b, type: 3}
-  - {fileID: 8300000, guid: 725e5f83c02fa2243a44cc62f48d26ee, type: 3}
-  - {fileID: 8300000, guid: 5fd09cd4df88a2c4eaaebb138a08c63b, type: 3}
-  - {fileID: 8300000, guid: f5c27cfb5cf97f34dad44d62cff60860, type: 3}
+  - {fileID: 8300000, guid: d8fdeed6a8ad5824093ab1c195af7b49, type: 3}
   Sounds: {fileID: 0}
   points: 5
 --- !u!61 &2994653534891788287

@@ -9,6 +9,10 @@ public class TDEnemy : MonoBehaviour
     public float Speed = 0.1f;
     public int DamagePerAttack = 20;
     public int AttackCooldownInSeconds = 3;
+    public int health = 5;
+
+    //Animator
+    private Animator anim;
 
     private Rigidbody2D rb2d;
     private Life attackTarget;
@@ -16,6 +20,7 @@ public class TDEnemy : MonoBehaviour
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -41,7 +46,16 @@ public class TDEnemy : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.name);
-        attackTarget = collision.gameObject.GetComponent<Life>();
+        if (collision.gameObject.CompareTag("Food"))
+        {
+            CurrentScore score = GameObject.Find("Score").GetComponent<CurrentScore>();
+            int newScore = PlayerPrefs.GetInt("Resources");
+            newScore -= DamagePerAttack;
+            PlayerPrefs.SetInt("Resources", newScore);
+            Destroy(this.gameObject);
+        }
+        else
+            attackTarget = collision.gameObject.GetComponent<Life>();
     }
 
     private bool TryAttack(Life target)
@@ -60,5 +74,16 @@ public class TDEnemy : MonoBehaviour
     {
         target.LostLife(DamagePerAttack);
         attackCooldown = AttackCooldownInSeconds;
+    }
+
+    public void Damage(int damageValue)
+    {
+        health -= damageValue;
+        if (health <= 0)
+        {
+            Objective = null;
+            anim.SetTrigger("Death");
+            Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
+        }
     }
 }
