@@ -5,25 +5,29 @@ using UnityEngine;
 
 public class EnemySFX : MonoBehaviour
 {
-    public float waitTime = 2.0f; //play sfx every 2 sec?
+    public float minDelay = 2.0f; //play sfx every 2 sec?
+    public float maxDelay = 10f;
+    public float minPitch = 0.75f;
+    public float maxPitch = 1.33f;
     float timer = 0.0f;
-    AudioSource AnimalAudioSource;
+    public AudioSource AnimalAudioSource;
     
 
     // Start is called before the first frame update
     void Start()
     {
         AnimalAudioSource = GetComponent<AudioSource>();
+        timer = Time.time + Random.Range(minDelay, maxDelay);
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= waitTime)
+        if (Time.time >= timer)
         {
+            AnimalAudioSource.pitch = Random.Range(minPitch, maxPitch);
             AnimalAudioSource.Play();
-            timer = 0.0f;
+            timer = Time.time + Random.Range(minDelay, maxDelay);
         }
     }
 }
