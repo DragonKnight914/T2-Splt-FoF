@@ -146,6 +146,9 @@ public class MenuController : MonoBehaviour
 
     public IEnumerator EnteringGame()
     {
+        PlayerPrefs.SetInt("Resources", 300);
+        PlayerPrefs.SetInt("PhaseTimer", 120);
+        PlayerPrefs.SetInt("CanEnterArea", 1);
         yield return new WaitForSeconds (6f);
         SceneManager.LoadScene(_newMatch);
     }

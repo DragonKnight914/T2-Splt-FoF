@@ -81,7 +81,7 @@ public class TDEnemy : MonoBehaviour
         health -= damageValue;
         if (health <= 0)
         {
-            Objective = null;
+
             anim.SetTrigger("Death");
             Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
         }
