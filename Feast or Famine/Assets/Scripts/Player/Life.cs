@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Life : MonoBehaviour
 {
-    [SerializeField] int life = 100;
+    public int life = 100;
     [SerializeField] int maxLife = 100;
     [SerializeField] float speed = .5f;
     
@@ -23,12 +23,13 @@ public class Life : MonoBehaviour
     {
         if(life <= 0)
         {
+            //StopAllCoroutines();
             Die();
         }
-        else
+        else if (life > 0)
         {
             life -= amount;
-            StartCoroutine(DecreaseLife());
+            //StartCoroutine(DecreaseLife());
         }
     }
 
@@ -43,26 +44,26 @@ public class Life : MonoBehaviour
         StartCoroutine (IncreaseLife());
     }
 
-    IEnumerator DecreaseLife()
+    /*void DecreaseLife()
     {
         float targetFillAmount = ((float)life) / ((float)maxLife);
 
         while(greenBar.fillAmount > targetFillAmount)
         {
             greenBar.fillAmount -= speed;
-            yield return new WaitForSeconds(.2f);
+            //yield return new WaitForSeconds(.2f);
 
             while(redBar.fillAmount > targetFillAmount)
             {
                 redBar.fillAmount -= speed * 5;
             }
 
-            yield return null;
+            //yield return null;
         }
 
         greenBar.fillAmount = targetFillAmount;
         redBar.fillAmount = targetFillAmount;
-    }
+    }*/
 
     IEnumerator IncreaseLife()
     {
@@ -87,6 +88,8 @@ public class Life : MonoBehaviour
 
     public void Die() 
     {
+
+        Debug.Log("ded");
         Destroy(gameObject);
     }
 }

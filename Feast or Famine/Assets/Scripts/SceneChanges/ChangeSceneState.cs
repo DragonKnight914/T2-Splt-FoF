@@ -42,7 +42,7 @@ public class ChangeSceneState : MonoBehaviour
         {
             if (canGetOtherScenes)
             {
-                if (bt.canBuild)
+                if (bt.canBuild && PlayerPrefs.GetInt("CanEnterArea") == 1)
                 {
                     
                     if (Input.GetKey(KeyCode.E))
@@ -92,6 +92,7 @@ public class ChangeSceneState : MonoBehaviour
     {
         fadeOut.SetActive(true);
         //PlayerPrefs.Save();
+        PlayerPrefs.SetInt("CanEnterArea", 0);
         /*string activeScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("BaseLevelSaved", activeScene);*/
         Debug.Log(sceneName);

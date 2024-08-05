@@ -17,6 +17,7 @@ public class BuildTime : MonoBehaviour
     [SerializeField] GameObject WallUI;
     [SerializeField] GameObject TowerUI;
     [SerializeField] Button buildMode;
+    [SerializeField] Button defenseMode;
 
     //Begin Defense Phase Button
     public bool canFastFoward = false;
@@ -60,12 +61,12 @@ public class BuildTime : MonoBehaviour
                     canBuild = true;
                     ChangeSceneState.instance.canGetOtherScenes = true;
                     buildMode.interactable = true;
+                    defenseMode.interactable = true;
                     buildText.SetActive(true);
                     defenseText.SetActive(false);
-                    WallUI.SetActive(false);
-                    TowerUI.SetActive(false);
                     time = 120;
                     PlayerPrefs.SetInt("PhaseTimer", time);
+                    PlayerPrefs.SetInt("CanEnterArea", 1);
                 }
                 else if (canBuild == true)
                 {
@@ -73,10 +74,14 @@ public class BuildTime : MonoBehaviour
                     canBuild = false;
                     ChangeSceneState.instance.canGetOtherScenes = false;
                     buildMode.interactable = false;
+                    defenseMode.interactable = false;
                     buildText.SetActive(false);
                     defenseText.SetActive(true);
+                    WallUI.SetActive(false);
+                    TowerUI.SetActive(false);
                     time = 60;
                     PlayerPrefs.SetInt("PhaseTimer", time);
+                    PlayerPrefs.SetInt("CanEnterArea", 0);
                     GridBuildingSystem.instance.ExitBuildMode();
                 }
             }
