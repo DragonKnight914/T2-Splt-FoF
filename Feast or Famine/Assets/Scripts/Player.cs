@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
 
     //Lives
     [SerializeField] public int lives = 3;
+    public SpriteRenderer sprite;
+    public bool canBeDamaged;
 
 
     //Powerups
@@ -383,12 +385,12 @@ public class Player : MonoBehaviour
           
         if (Physics2D.BoxCast(transform.position - transform.up * castDistance, boxSize, 0f, Vector2.down, 0f, groundMask))
         {
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
             return true;
         }
         else
         {
-            Debug.Log("Not Grounded");
+            //Debug.Log("Not Grounded");
             return false;
         }
     }
@@ -420,26 +422,34 @@ public class Player : MonoBehaviour
     }
 
 
-    /*public void Damage()
+    public void Damage()
     {
-        //Anim.SetTrigger("Hurt");
-        lives--; //takes 1 life away
-        //UI.UpdateLives(lives); //actual parameter
-        Debug.Log("" + lives);
+        if (canBeDamaged)
+            StartCoroutine(DamageFlash());
+        //anim.SetTrigger("Hurt");
+        /*float timer = 0;
+        anim.SetBool("Hurt", true);
+        timer += Time.deltaTime;
+        if (timer >= anim.GetCurrentAnimatorStateInfo(0).length)
+            anim.SetBool("Hurt", false);*/
+    }
 
-        if (lives < 1)
-        {
-
-            //animation
-            //Instantiate(explosion, transform.position, Quaternion.identity);
-            AudioSource.PlayClipAtPoint(DeathClip, Camera.main.transform.position);
-
-            //remove
-            Destroy(this.gameObject);
-
-            
-        }
-
-        
-    }*/
+    public IEnumerator DamageFlash()
+    {
+        canBeDamaged = false;
+        sprite.color = new Color(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = new Color(255, 255, 255, 255);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = new Color(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = new Color(255, 255, 255, 255);
+        canBeDamaged = true;
+        //anim.SetTrigger("Hurt");
+        /*float timer = 0;
+        anim.SetBool("Hurt", true);
+        timer += Time.deltaTime;
+        if (timer >= anim.GetCurrentAnimatorStateInfo(0).length)
+            anim.SetBool("Hurt", false);*/
+    }
 }
