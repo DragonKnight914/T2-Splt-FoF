@@ -71,6 +71,10 @@ public class MenuController : MonoBehaviour
         customizingHash = Animator.StringToHash("isCustomizing");
 
         resolutions = Screen.resolutions;
+        if (resolutionDropdown == null)
+        {
+            resolutionDropdown = new GameObject().AddComponent<TMP_Dropdown>();
+        }
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();

@@ -43,7 +43,16 @@ public abstract class BuildingAIMajor : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 var player = collision.gameObject;
-                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+                Collider2D playerCollider = null;
+                Collider2D myCollider = GetComponent<Collider2D>();
+                if (player != null)
+                {
+                    playerCollider = player.GetComponent<Collider2D>();
+                }
+                if (playerCollider != null && myCollider != null)
+                {
+                    Physics2D.IgnoreCollision(playerCollider, myCollider, true);
+                }
             }
         }
     }

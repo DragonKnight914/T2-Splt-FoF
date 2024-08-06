@@ -30,7 +30,7 @@ public class WaveSpawner : MonoBehaviour
         if (bt.canBuild == false)
         {
             updateSpawning = true;
-            Debug.Log("updateSpawning" + updateSpawning);
+            //Debug.Log("updateSpawning" + updateSpawning);
             if (!AllWavesSpawned)
             {
                 cooldown -= Time.deltaTime;
