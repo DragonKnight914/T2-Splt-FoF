@@ -28,7 +28,7 @@ public class TDEnemy : MonoBehaviour
     {
         DamagePerAttack *= PlayerPrefs.GetInt("RoundScaling");
         health *= PlayerPrefs.GetInt("RoundScaling");
-        Speed *= PlayerPrefs.GetInt("RoundScaling");
+        Speed *= ((float)PlayerPrefs.GetInt("RoundScaling"));
     }
 
     void Update()

@@ -37,7 +37,20 @@ public class CurrentScore : MonoBehaviour
         }
         if (isAtBase)
         {
-            if (PlayerPrefs.GetInt("Resources") > 0)
+            for(int i = 0;  i < 1000; i+= 100)
+            {
+                if(PlayerPrefs.GetInt("Resources") > i)
+                {
+                    for (int j = 0;  j < 11; j++)
+                    {
+                        if(j == (i / 100))
+                            food[j].SetActive(true);
+                        else
+                            food[j].SetActive(false);
+                    }
+                }
+            }
+            /*if (PlayerPrefs.GetInt("Resources") > 0)
                 food[0].SetActive(true);
             if (PlayerPrefs.GetInt("Resources") > 50)
                 food[1].SetActive(true);
@@ -58,7 +71,7 @@ public class CurrentScore : MonoBehaviour
             if (PlayerPrefs.GetInt("Resources") > 800)
                 food[9].SetActive(true);
             if (PlayerPrefs.GetInt("Resources") > 900)
-                food[10].SetActive(true);
+                food[10].SetActive(true);*/
         }
     }
 

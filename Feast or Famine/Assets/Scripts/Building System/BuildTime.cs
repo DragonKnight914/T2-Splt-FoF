@@ -16,8 +16,11 @@ public class BuildTime : MonoBehaviour
     [SerializeField] GameObject defenseText;
     [SerializeField] GameObject WallUI;
     [SerializeField] GameObject TowerUI;
+    [SerializeField] GameObject WallUIBack;
+    [SerializeField] GameObject TowerUIBack;
     [SerializeField] GameObject FeastMusic;
     [SerializeField] GameObject FamineMusic;
+    [SerializeField] Renderer grid;
     [SerializeField] Button buildMode;
     [SerializeField] Button defenseMode;
 
@@ -28,6 +31,7 @@ public class BuildTime : MonoBehaviour
 
     //Day - night cycle
     public PostProcessVolume m_Volume;
+    private Movement P;
 
 
     // Start is called before the first frame update
@@ -36,6 +40,7 @@ public class BuildTime : MonoBehaviour
         time = PlayerPrefs.GetInt("PhaseTimer");
         UpdateTimeText();
         
+        P = GameObject.Find("obj_Player").GetComponent<Movement>();
         //buildMode.interactable = false;
         StartCoroutine(Countdown());
     }
@@ -44,7 +49,7 @@ public class BuildTime : MonoBehaviour
     {
         if (canFastFoward)
             Time.timeScale = 20;
-        else
+        else if(P.isPaused == false)
         {
             Time.timeScale = 1;
         }
@@ -86,6 +91,9 @@ public class BuildTime : MonoBehaviour
                     defenseText.SetActive(true);
                     WallUI.SetActive(false);
                     TowerUI.SetActive(false);
+                    grid.enabled = false;
+                    WallUIBack.SetActive(false);
+                    TowerUIBack.SetActive(false);
                     FeastMusic.SetActive(false);
                     FamineMusic.SetActive(true);
                     time = 60;

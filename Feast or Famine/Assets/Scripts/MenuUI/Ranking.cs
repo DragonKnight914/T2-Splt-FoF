@@ -22,21 +22,21 @@ public class Ranking : MonoBehaviour
             gameOverScreen.SetActive(true);
             MainMenu.SetActive(false);
         }
-        if (PlayerPrefs.GetInt("TotalResources") < 100)
+        if (PlayerPrefs.GetInt("TotalResources") < 300)
             rankings[5].SetActive(true);
-        else if (PlayerPrefs.GetInt("TotalResources") <= 300 && 
-        PlayerPrefs.GetInt("TotalResources") > 100)
-            rankings[4].SetActive(true);
         else if (PlayerPrefs.GetInt("TotalResources") <= 500 && 
         PlayerPrefs.GetInt("TotalResources") > 300)
-            rankings[3].SetActive(true);
+            rankings[4].SetActive(true);
         else if (PlayerPrefs.GetInt("TotalResources") <= 1000 && 
         PlayerPrefs.GetInt("TotalResources") > 500)
-            rankings[2].SetActive(true);
+            rankings[3].SetActive(true);
         else if (PlayerPrefs.GetInt("TotalResources") <= 1500 && 
         PlayerPrefs.GetInt("TotalResources") > 1000)
+            rankings[2].SetActive(true);
+        else if (PlayerPrefs.GetInt("TotalResources") <= 3000 && 
+        PlayerPrefs.GetInt("TotalResources") > 1500)
             rankings[1].SetActive(true);
-        else if (PlayerPrefs.GetInt("TotalResources") >= 3000)
+        else if (PlayerPrefs.GetInt("TotalResources") >= 5000)
             rankings[1].SetActive(true);
 
     }

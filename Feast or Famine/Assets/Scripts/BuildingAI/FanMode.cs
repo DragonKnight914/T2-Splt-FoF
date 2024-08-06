@@ -25,7 +25,8 @@ public class FanMode : BuildingAIMajor
     // Update is called once per frame
     void Update()
     {
-
+        centerPos = transform.position;
+        
         if(target != null && b.Placed)
         {
             Shoot();
@@ -75,6 +76,20 @@ public class FanMode : BuildingAIMajor
             air.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleAir));
 
             airTime = 5f;
+        }
+    }
+
+    //Debug closer Enemies
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radius);
+
+
+        if(target != null)    
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, target.transform.position);
         }
     }
 

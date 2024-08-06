@@ -10,7 +10,7 @@ namespace FSR
 
         private Animator Anim = null;
         private string currentState;
-        private Player P = null;
+        private Movement P = null;
 
         private float xAxis;
         private float yAxis;
@@ -56,7 +56,7 @@ namespace FSR
         {
             rb2d = GetComponent<Rigidbody2D>();
             Anim = GetComponent<Animator>();
-            P = GetComponent<Player>();
+            P = GameObject.Find("obj_Player").GetComponent<Movement>();
             //groundMask = 1 << LayerMask.NameToLayer("Ground");
             //conncet to player's animator component
         }
@@ -109,7 +109,8 @@ namespace FSR
             //{
                 //if (P.isGrounded() && !P.isDashing && !isAulosPlaying && rb2d.velocity.y == 0f && !canLand)
                 //{
-                    
+                if (P.isPaused == false)
+                {
                     if (xAxis > 0 && yAxis == 0)
                     {
                         ChangeAnimationState(PLAYER_WALKR);
@@ -154,7 +155,7 @@ namespace FSR
                     {
                         ChangeAnimationState(PLAYER_IDLE);
                     }
-                //}
+                }
 
                 /*if (P.isDashing)
                 {

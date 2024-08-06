@@ -12,6 +12,8 @@ public class WaveSpawner : MonoBehaviour
     public BuildTime bt;
     public List<EnemyWaveSpawnCount> EnemiesInWave;
 
+    //Updates the number of enemies in wave once
+    private bool updateSpawning = true;
 
     private float cooldown;
     public bool AllWavesSpawned { get; private set; } = false;
@@ -19,25 +21,42 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        //foreach (var spawner in EnemiesInWave)
+            //spawner.NumberOfEnemies *= PlayerPrefs.GetInt("RoundScaling");
     }
 
     void Update()
     {
         if (bt.canBuild == false)
         {
+            updateSpawning = true;
+            Debug.Log("updateSpawning" + updateSpawning);
             if (!AllWavesSpawned)
             {
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                 {
                     cooldown = SecondsBetweenSpawns;
+                    
                     SpawnEnemies();
                 }
             }
         }
         else if (bt.canBuild)
         {
+            AllWavesSpawned = false;
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemies");
+            if (updateSpawning)
+            {
+                foreach (var spawner in EnemiesInWave)
+                {
+                    spawner.Complete = false;
+                    spawner.NumberOfEnemies = 4;
+                    spawner.NumberOfEnemies *= PlayerPrefs.GetInt("RoundScaling");
+                }
+                updateSpawning = false;
+            }
+            
             for (int j = 0; j < enemies.Length; j++)
             {
                 Destroy(enemies[j]);
@@ -65,9 +84,9 @@ public class EnemyWaveSpawnCount
 {
     public TDEnemy[] Enemies;
     public Transform SpawnLocation;
-    public int NumberOfEnemies = 10;
+    public int NumberOfEnemies = 4;
 
-    public bool Complete { get; private set; } = false;
+    public bool Complete { get; set; } = false;
 
     private int enemiesSpawned;
     private int enemiesIndex = 0;

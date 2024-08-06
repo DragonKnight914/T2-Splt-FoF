@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb2d;
     Vector2 movement;
     
+    //Puase
+    public bool isPaused = false;
+    public GameObject PauseMenu;
 
     #region Unity Methods
     // Use Awake to get components, easy to dont get issue futurely
@@ -20,6 +23,14 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        //Pause Button
+        if (Input.GetKeyDown(KeyCode.P) && isPaused == false)
+        {
+                Time.timeScale = 0;
+                isPaused = true;
+                canMove = false;
+                PauseMenu.SetActive(true);
+        }
         if (canMove)
         {
             Move();
@@ -46,5 +57,12 @@ public class Movement : MonoBehaviour
         {
             movement.x = 0;
         }*/
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1;
+        isPaused = false;
+        canMove = true;
     }
 }

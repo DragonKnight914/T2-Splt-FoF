@@ -19,6 +19,9 @@ public class Building : MonoBehaviour
         {
             GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f);
         }
+
+        if (PlayerPrefs.GetInt("GameOver") == 1)
+            Destroy(this.gameObject);
     }
 
 
