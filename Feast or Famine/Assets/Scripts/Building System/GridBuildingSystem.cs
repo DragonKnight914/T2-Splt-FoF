@@ -36,6 +36,7 @@ public class GridBuildingSystem : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
