@@ -26,7 +26,9 @@ public class TDEnemy : MonoBehaviour
 
     void Start()
     {
-        
+        DamagePerAttack *= PlayerPrefs.GetInt("RoundScaling");
+        health *= PlayerPrefs.GetInt("RoundScaling");
+        Speed *= PlayerPrefs.GetInt("RoundScaling");
     }
 
     void Update()
@@ -52,7 +54,8 @@ public class TDEnemy : MonoBehaviour
             int newScore = PlayerPrefs.GetInt("Resources");
             newScore -= DamagePerAttack;
             PlayerPrefs.SetInt("Resources", newScore);
-            Destroy(this.gameObject);
+            anim.SetTrigger("Death");
+            Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
         }
         else
             attackTarget = collision.gameObject.GetComponent<Life>();

@@ -16,8 +16,12 @@ public class BuildTime : MonoBehaviour
     [SerializeField] GameObject defenseText;
     [SerializeField] GameObject WallUI;
     [SerializeField] GameObject TowerUI;
+    [SerializeField] GameObject FeastMusic;
+    [SerializeField] GameObject FamineMusic;
     [SerializeField] Button buildMode;
     [SerializeField] Button defenseMode;
+
+    public int rounds = 0;
 
     //Begin Defense Phase Button
     public bool canFastFoward = false;
@@ -64,9 +68,12 @@ public class BuildTime : MonoBehaviour
                     defenseMode.interactable = true;
                     buildText.SetActive(true);
                     defenseText.SetActive(false);
+                    FeastMusic.SetActive(true);
+                    FamineMusic.SetActive(false);
                     time = 120;
                     PlayerPrefs.SetInt("PhaseTimer", time);
                     PlayerPrefs.SetInt("CanEnterArea", 1);
+                    
                 }
                 else if (canBuild == true)
                 {
@@ -79,9 +86,14 @@ public class BuildTime : MonoBehaviour
                     defenseText.SetActive(true);
                     WallUI.SetActive(false);
                     TowerUI.SetActive(false);
+                    FeastMusic.SetActive(false);
+                    FamineMusic.SetActive(true);
                     time = 60;
                     PlayerPrefs.SetInt("PhaseTimer", time);
                     PlayerPrefs.SetInt("CanEnterArea", 0);
+                    rounds++;
+                    PlayerPrefs.SetInt("RoundScaling", rounds);
+                    Debug.Log(rounds);
                     GridBuildingSystem.instance.ExitBuildMode();
                 }
             }

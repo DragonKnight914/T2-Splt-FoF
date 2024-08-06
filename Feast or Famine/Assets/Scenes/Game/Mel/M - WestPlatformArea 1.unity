@@ -9917,16 +9917,16 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3992467367076679169, guid: d549c5ec476ca1340b2cbf159c62b810, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8fbd035b5073b394b814f15725fb7529, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -10013,19 +10013,19 @@ AudioReverbFilter:
   m_Enabled: 1
   m_DryLevel: 0
   m_Room: -1000
-  m_RoomHF: -476
-  m_DecayTime: 4.32
-  m_DecayHFRatio: 0.59
-  m_ReflectionsLevel: -789
-  m_ReverbLevel: -289
-  m_ReverbDelay: 0.03
+  m_RoomHF: -500
+  m_DecayTime: 3.92
+  m_DecayHFRatio: 0.7
+  m_ReflectionsLevel: -1230
+  m_ReverbLevel: -2
+  m_ReverbDelay: 0.029
   m_Diffusion: 100
   m_Density: 100
   m_HFReference: 5000
   m_RoomLF: 0
   m_LFReference: 250
   m_ReflectionsDelay: 0
-  m_ReverbPreset: 7
+  m_ReverbPreset: 8
 --- !u!114 &221140949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99726,6 +99726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ba5c53dccdf034d8429ce2d9aedf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScore: 0
   food:
   - {fileID: 0}
   - {fileID: 0}
@@ -99738,6 +99739,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  fadeOut: {fileID: 0}
   isAtBase: 0
 --- !u!114 &1918703420
 MonoBehaviour:
