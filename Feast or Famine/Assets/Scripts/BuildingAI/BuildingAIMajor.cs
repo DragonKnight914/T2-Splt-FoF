@@ -37,11 +37,6 @@ public abstract class BuildingAIMajor : MonoBehaviour
             if (collision.gameObject.tag == "enemies")
             {
                 myLife.LostLife(5);
-                if(myLife.life <= 0)
-                {
-                    Vector3Int pos = GridBuildingSystem.instance.gridLayout.WorldToCell(transform.position);
-                    GridBuildingSystem.instance.RemoveBuilding(pos);
-                }
             }
 
             //Can Erase if unnecessary

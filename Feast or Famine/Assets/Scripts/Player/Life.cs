@@ -88,8 +88,15 @@ public class Life : MonoBehaviour
 
     public void Die() 
     {
+        Building b = GetComponent<Building>();
+        //Verifyies if the object is a Building
+        if(b != null)
+        {
+            Vector3Int pos = GridBuildingSystem.instance.gridLayout.WorldToCell(transform.position);
+            GridBuildingSystem.instance.RemoveBuilding(pos);
+        }
 
-        Debug.Log("ded");
+        //Debug.Log("ded");
         Destroy(gameObject);
     }
 }
