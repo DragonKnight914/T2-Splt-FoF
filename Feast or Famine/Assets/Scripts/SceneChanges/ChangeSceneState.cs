@@ -92,6 +92,7 @@ public class ChangeSceneState : MonoBehaviour
     {
         fadeOut.SetActive(true);
         //PlayerPrefs.Save();
+        GridBuildingSystem.instance.ExitBuildMode();
         PlayerPrefs.SetInt("CanEnterArea", 0);
         /*string activeScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("BaseLevelSaved", activeScene);*/

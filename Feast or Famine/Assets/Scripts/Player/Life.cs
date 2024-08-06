@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Life : MonoBehaviour
 {
     public int life = 100;
-    [SerializeField] int maxLife = 100;
+    [SerializeField] public int maxLife = 100;
     [SerializeField] float speed = .5f;
     
     //hypothetical value

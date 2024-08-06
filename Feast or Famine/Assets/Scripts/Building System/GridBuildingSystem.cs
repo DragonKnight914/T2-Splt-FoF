@@ -77,9 +77,12 @@ public class GridBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Can be Placed");
+
             if (temporary.CanBePlaced())
             {
                 temporary.Place();
+                Debug.Log("Placed");
                 
 
                 if(temporary.Placed == true)
@@ -221,7 +224,7 @@ public class GridBuildingSystem : MonoBehaviour
     }
 
 
-    private void RemoveBuilding(Vector3Int position)
+    public void RemoveBuilding(Vector3Int position)
     {
         Building buildinToRemove = null;
         Building[] allBuildings = FindObjectsOfType<Building>();
@@ -238,10 +241,15 @@ public class GridBuildingSystem : MonoBehaviour
         if(buildinToRemove != null)
         {
             BoundsInt buildingArea = buildinToRemove.area;
+            Life myLife = buildinToRemove.GetComponent<Life>();
 
-            //Try it too
-            PlayerPrefs.SetInt("Resources", PlayerPrefs.GetInt("Resources") + buildinToRemove.resourceCost); 
-            PlayerPrefs.Save();
+
+            if(myLife != null && myLife.life == myLife.maxLife)
+            {
+                PlayerPrefs.SetInt("Resources", PlayerPrefs.GetInt("Resources") + buildinToRemove.resourceCost);
+                PlayerPrefs.Save();
+            }
+
             Destroy(buildinToRemove.gameObject);
             SetTilesBlock(buildingArea, TileType.White, mainTile);
         }

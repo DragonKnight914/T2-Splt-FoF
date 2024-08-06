@@ -7,14 +7,14 @@ public abstract class BuildingAIMajor : MonoBehaviour
 {
     Canvas myCanvas;
     Camera mainCamera;
-    Life life;
+    Life myLife;
     Building b;
 
 
     void Awake()
     {
         myCanvas = GetComponentInChildren<Canvas>();    
-        life = GetComponent<Life>();
+        myLife = GetComponent<Life>();
         b = GetComponent<Building>();
     }
     void Update()
@@ -36,16 +36,21 @@ public abstract class BuildingAIMajor : MonoBehaviour
         {
             if (collision.gameObject.tag == "enemies")
             {
-                Debug.Log("LoseLife");
-                life.LostLife(5);
+                myLife.LostLife(5);
+                if(myLife.life <= 0)
+                {
+                    Vector3Int pos = GridBuildingSystem.instance.gridLayout.WorldToCell(transform.position);
+                    GridBuildingSystem.instance.RemoveBuilding(pos);
+                }
             }
 
             //Can Erase if unnecessary
             if (collision.gameObject.tag == "Player")
             {
-                                var player = collision.gameObject;
+                var player = collision.gameObject;
                 Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
             }
         }
     }
+
 }

@@ -54,6 +54,7 @@ public class Building : MonoBehaviour
         areaTemp.position = positionInt;
 
         Placed = true;
+        Debug.Log("Placed");
 
         GridBuildingSystem.instance.TakeArea(areaTemp);
         DontDestroyOnLoad(gameObject);
