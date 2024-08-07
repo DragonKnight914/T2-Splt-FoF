@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] bool canMove = true;
+    public bool canMove = true;
 
     Rigidbody2D rb2d;
     Vector2 movement;

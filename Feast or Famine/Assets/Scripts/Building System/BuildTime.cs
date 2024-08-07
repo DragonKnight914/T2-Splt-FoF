@@ -65,6 +65,18 @@ public class BuildTime : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+        if (PlayerPrefs.GetInt("GameOver") == 1 && CanvasItems.activeSelf)
+        {
+            //CanvasItems.SetActive(false);
+            StartCoroutine(GameEnd());
+        }
+    }
+
+    IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(3.6f);
+        CanvasItems.SetActive(false);
+
     }
 
     IEnumerator Countdown()
@@ -73,7 +85,7 @@ public class BuildTime : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             if (SceneManager.GetActiveScene() 
-            == SceneManager.GetSceneByName("M - BaseArea 2"))
+            == SceneManager.GetSceneByName("M - BaseArea 2") && !P.isPaused)
                 time--;
             PlayerPrefs.SetInt("PhaseTimer", time);
 

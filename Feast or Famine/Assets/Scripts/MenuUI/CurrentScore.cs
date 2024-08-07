@@ -12,6 +12,7 @@ public class CurrentScore : MonoBehaviour
     public GameObject[] food; 
     public GameObject fadeOut;
     public bool isAtBase = false;
+    private bool gameOver = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +31,13 @@ public class CurrentScore : MonoBehaviour
     void Update()
     {
         score.text = ":" + PlayerPrefs.GetInt("Resources").ToString("");
-        if (PlayerPrefs.GetInt("Resources") < 0)
+        if (PlayerPrefs.GetInt("Resources") < 0 && PlayerPrefs.GetInt("GameOver") == 0)
         {
+            PlayerPrefs.SetInt("Resources", 0);
+            //gameOver = true;
+            //Debug.Log(gameOver);
             StartCoroutine(GameOver());
+            
             
         }
         if (isAtBase)
@@ -77,10 +82,13 @@ public class CurrentScore : MonoBehaviour
 
     private IEnumerator GameOver()
     {
+        Debug.Log("GameOver");
         fadeOut.SetActive(true);
         PlayerPrefs.SetInt("GameOver", 1);
         yield return new WaitForSeconds(3.5f);
         SceneManager.LoadScene("M - Menu");
+        gameOver = false;
+       
     }
 
 

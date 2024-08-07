@@ -42,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
                 }
             }
         }
-        else if (bt.canBuild)
+        else if (bt.canBuild || PlayerPrefs.GetInt("Resources") < 0)
         {
             AllWavesSpawned = false;
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemies");
@@ -62,6 +62,18 @@ public class WaveSpawner : MonoBehaviour
                 Destroy(enemies[j]);
             }
         }
+        if (PlayerPrefs.GetInt("GameOver") == 1 && this.gameObject.activeSelf)
+        {
+            StartCoroutine(GameEnd());
+            //this.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(3f);
+        this.gameObject.SetActive(false);
+
     }
 
 

@@ -22,6 +22,8 @@ public class TutorialCheck : MonoBehaviour
         else
         {
             P.isPaused = true;
+            P.canMove = false;
+           
         }
 
 
@@ -31,11 +33,15 @@ public class TutorialCheck : MonoBehaviour
     {
         PlayerPrefs.SetInt("HasDoneTutorial", 1);
         P.isPaused = false;
+        P.canMove = true;
+    
     }
 
     public void EndTutorial()
     {
         PlayerPrefs.SetInt("HasDoneTutorial", 1);
         P.isPaused = false;
+        P.canMove = true;
+       
     }
 }

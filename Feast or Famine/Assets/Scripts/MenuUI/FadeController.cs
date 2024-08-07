@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadeController : MonoBehaviour
 {
@@ -24,9 +25,24 @@ public class FadeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("CanEnterArea") == 0)
+        if (PlayerPrefs.GetInt("CanEnterArea") == 0 && PlayerPrefs.GetInt("GameOver") == 0
+        && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("M - BaseArea 2"))
         {
+            
             fade.SetActive(false);
+            //Debug.Log(fade.activeSelf);
         }
+        else if (PlayerPrefs.GetInt("CanEnterArea") == 0 && PlayerPrefs.GetInt("GameOver") == 1
+        && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("M - BaseArea 2"))
+            StartCoroutine(GameEnd());
     }
+
+    IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(0.1f);
+        fade.SetActive(false);
+
+    }
+    
 }
+
