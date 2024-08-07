@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        //PauseMenu = GameObject.Find("PopoutDialogContainer");
     }
 
     void Update()

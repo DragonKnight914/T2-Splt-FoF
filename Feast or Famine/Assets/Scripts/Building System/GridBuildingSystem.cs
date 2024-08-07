@@ -35,8 +35,7 @@ public class GridBuildingSystem : MonoBehaviour
     #region Unity Methods
     public void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        
     }
 
     // Start is called before the first frame update
@@ -46,6 +45,15 @@ public class GridBuildingSystem : MonoBehaviour
         AddTileBase(TileType.White, t_White); 
         AddTileBase(TileType.Green, t_Green);
         AddTileBase(TileType.Red, t_Red);
+        //prevents duplication
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

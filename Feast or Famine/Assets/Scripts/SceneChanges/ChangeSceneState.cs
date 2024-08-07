@@ -93,11 +93,20 @@ public class ChangeSceneState : MonoBehaviour
         fadeOut.SetActive(true);
         //PlayerPrefs.Save();
         GridBuildingSystem.instance.ExitBuildMode();
-        PlayerPrefs.SetInt("CanEnterArea", 0);
+        
         /*string activeScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("BaseLevelSaved", activeScene);*/
         Debug.Log(sceneName);
         yield return new WaitForSeconds(3f);
+        bt.MusicHolder.SetActive(false);
         SceneManager.LoadScene(nameScene);
+        PlayerPrefs.SetInt("CanEnterArea", 0);
+        //StartCoroutine(TurnOffFade());
+        
+    }
+    public IEnumerator TurnOffFade()
+    {
+        yield return new WaitForSeconds(6f);
+        PlayerPrefs.SetInt("CanEnterArea", 0);
     }
 }

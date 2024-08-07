@@ -3221,6 +3221,10 @@ PrefabInstance:
       propertyPath: Sounds
       value: 
       objectReference: {fileID: 1937306704}
+    - target: {fileID: 1141198646492810428, guid: 6d81699aaf7a59c499fc34b4a81ee9ae, type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 1880111315}
     - target: {fileID: 3912170821111946413, guid: 6d81699aaf7a59c499fc34b4a81ee9ae, type: 3}
       propertyPath: m_Name
       value: CornPoint (1)
@@ -5665,6 +5669,10 @@ PrefabInstance:
       propertyPath: Sounds
       value: 
       objectReference: {fileID: 1937306704}
+    - target: {fileID: 4388300853407993328, guid: c302af20d07cda84986082d296f0c851, type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 1880111315}
     - target: {fileID: 4790068295997872943, guid: c302af20d07cda84986082d296f0c851, type: 3}
       propertyPath: m_Name
       value: PotatoPoint
@@ -60657,7 +60665,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1461873151
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1822405905
 RectTransform:
@@ -60674,7 +60682,6 @@ RectTransform:
   - {fileID: 2096767550}
   - {fileID: 945264272}
   - {fileID: 1697856681}
-  - {fileID: 2056738577}
   - {fileID: 739104138}
   - {fileID: 1417502515}
   - {fileID: 343763157}
@@ -60686,6 +60693,7 @@ RectTransform:
   - {fileID: 1156377054}
   - {fileID: 119908530}
   - {fileID: 960657531}
+  - {fileID: 2056738577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -62610,6 +62618,10 @@ PrefabInstance:
       propertyPath: Sounds
       value: 
       objectReference: {fileID: 1937306704}
+    - target: {fileID: 4388300853407993328, guid: c302af20d07cda84986082d296f0c851, type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 1880111315}
     - target: {fileID: 4790068295997872943, guid: c302af20d07cda84986082d296f0c851, type: 3}
       propertyPath: m_Name
       value: PotatoPoint (1)

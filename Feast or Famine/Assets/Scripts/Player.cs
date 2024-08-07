@@ -131,12 +131,12 @@ public class Player : MonoBehaviour
     {
         score = PlayerPrefs.GetInt("Resources");
         //Pause Button
-        if (Input.GetKeyDown(KeyCode.P) && isPaused == false)
+        /*if (Input.GetKeyDown(KeyCode.P) && isPaused == false)
         {
                 Time.timeScale = 0;
                 isPaused = true;
                 PauseMenu.SetActive(true);
-        }
+        }*/
 
         if (!inDialog  && isPaused == false)
         {

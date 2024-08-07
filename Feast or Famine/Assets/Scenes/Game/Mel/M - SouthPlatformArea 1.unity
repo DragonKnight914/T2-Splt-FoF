@@ -54267,7 +54267,6 @@ RectTransform:
   - {fileID: 800858500}
   - {fileID: 2006291957}
   - {fileID: 1552563329}
-  - {fileID: 1396903626}
   - {fileID: 174395884}
   - {fileID: 1810736423}
   - {fileID: 1220756692}
@@ -54279,6 +54278,7 @@ RectTransform:
   - {fileID: 1077163186}
   - {fileID: 1140649166}
   - {fileID: 453269271}
+  - {fileID: 1396903626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -54347,7 +54347,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1461873151
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &1722305766
 GameObject:

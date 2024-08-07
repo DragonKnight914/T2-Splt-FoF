@@ -51070,7 +51070,6 @@ RectTransform:
   - {fileID: 886875921}
   - {fileID: 312734017}
   - {fileID: 205457379}
-  - {fileID: 364394635}
   - {fileID: 1726174760}
   - {fileID: 129983740}
   - {fileID: 1157102323}
@@ -51082,6 +51081,7 @@ RectTransform:
   - {fileID: 657619101}
   - {fileID: 378376093}
   - {fileID: 864340184}
+  - {fileID: 364394635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -51150,7 +51150,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1461873151
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!213 &830954450
 Sprite:

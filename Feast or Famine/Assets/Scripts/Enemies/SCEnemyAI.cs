@@ -40,6 +40,7 @@ public class SCEnemyAI : MonoBehaviour
         StartCoroutine(Movement());
         StartCoroutine(Jumping());
         P = GameObject.Find("Player").GetComponent<Player>();
+        pointLoss *= PlayerPrefs.GetInt("RoundScaling") + 1;
     }
 
     // Update is called once per frame

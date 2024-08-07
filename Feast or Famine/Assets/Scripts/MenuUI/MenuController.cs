@@ -154,6 +154,7 @@ public class MenuController : MonoBehaviour
         PlayerPrefs.SetInt("PhaseTimer", 120);
         PlayerPrefs.SetInt("CanEnterArea", 1);
         PlayerPrefs.SetInt("TotalResources", 0);
+        PlayerPrefs.SetInt("HasDoneTutorial", 0);
         PlayerPrefs.SetInt("RoundScaling", 0);
         yield return new WaitForSeconds (6f);
         SceneManager.LoadScene(_newMatch);

@@ -21,8 +21,10 @@ public class Ranking : MonoBehaviour
         {
             gameOverScreen.SetActive(true);
             MainMenu.SetActive(false);
+            PlayerPrefs.SetInt("HasDoneTutorial", 0);
         }
-        if (PlayerPrefs.GetInt("TotalResources") < 300)
+        if (PlayerPrefs.GetInt("TotalResources") < 400 &&
+        PlayerPrefs.GetInt("TotalResources") >= 300)
             rankings[5].SetActive(true);
         else if (PlayerPrefs.GetInt("TotalResources") <= 500 && 
         PlayerPrefs.GetInt("TotalResources") > 300)

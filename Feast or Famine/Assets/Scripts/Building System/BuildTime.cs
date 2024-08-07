@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 
 public class BuildTime : MonoBehaviour
@@ -11,15 +12,20 @@ public class BuildTime : MonoBehaviour
     public int time = 120;
     public bool canBuild = false;
 
+    public GameObject CanvasItems;
+    public GameObject score;
+    public GameObject Camera;
     [SerializeField] TextMeshProUGUI timeToSpent;
     [SerializeField] GameObject buildText;
     [SerializeField] GameObject defenseText;
     [SerializeField] GameObject WallUI;
     [SerializeField] GameObject TowerUI;
+    [SerializeField] GameObject BuildMode;
     [SerializeField] GameObject WallUIBack;
     [SerializeField] GameObject TowerUIBack;
     [SerializeField] GameObject FeastMusic;
     [SerializeField] GameObject FamineMusic;
+    public GameObject MusicHolder;
     [SerializeField] Renderer grid;
     [SerializeField] Button buildMode;
     [SerializeField] Button defenseMode;
@@ -39,6 +45,7 @@ public class BuildTime : MonoBehaviour
     {
         time = PlayerPrefs.GetInt("PhaseTimer");
         UpdateTimeText();
+        //CanvasItems.SetActive(true);
         
         P = GameObject.Find("obj_Player").GetComponent<Movement>();
         //buildMode.interactable = false;
@@ -47,6 +54,11 @@ public class BuildTime : MonoBehaviour
 
     void Update()
     {
+        //if you are at base, activate the music
+        if(MusicHolder.activeSelf == false && SceneManager.GetActiveScene() 
+        == SceneManager.GetSceneByName("M - BaseArea 2"))
+            MusicHolder.SetActive(true);
+        
         if (canFastFoward)
             Time.timeScale = 20;
         else if(P.isPaused == false)
@@ -60,7 +72,9 @@ public class BuildTime : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            time--;
+            if (SceneManager.GetActiveScene() 
+            == SceneManager.GetSceneByName("M - BaseArea 2"))
+                time--;
             PlayerPrefs.SetInt("PhaseTimer", time);
 
             if (time <= 0)
@@ -75,6 +89,7 @@ public class BuildTime : MonoBehaviour
                     defenseText.SetActive(false);
                     FeastMusic.SetActive(true);
                     FamineMusic.SetActive(false);
+                    Camera.SetActive(false);
                     time = 120;
                     PlayerPrefs.SetInt("PhaseTimer", time);
                     PlayerPrefs.SetInt("CanEnterArea", 1);
@@ -96,6 +111,7 @@ public class BuildTime : MonoBehaviour
                     TowerUIBack.SetActive(false);
                     FeastMusic.SetActive(false);
                     FamineMusic.SetActive(true);
+                    Camera.SetActive(true);
                     time = 60;
                     PlayerPrefs.SetInt("PhaseTimer", time);
                     PlayerPrefs.SetInt("CanEnterArea", 0);

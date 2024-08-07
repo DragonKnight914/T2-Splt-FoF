@@ -38421,7 +38421,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1461873151
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1747011299
 RectTransform:
@@ -38438,7 +38438,6 @@ RectTransform:
   - {fileID: 1401001855}
   - {fileID: 888000351}
   - {fileID: 1269047712}
-  - {fileID: 166500041}
   - {fileID: 1029519986}
   - {fileID: 25626110}
   - {fileID: 2091967586}
@@ -38450,6 +38449,7 @@ RectTransform:
   - {fileID: 527886376}
   - {fileID: 579913590}
   - {fileID: 1088847652}
+  - {fileID: 166500041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

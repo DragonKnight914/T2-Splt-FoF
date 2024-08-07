@@ -18,6 +18,7 @@ public class Cornucopia : MonoBehaviour
 
     //Transition
     [SerializeField] private GameObject fadeOut; 
+    private bool canInteract = true;
     public string _base;
 
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class Cornucopia : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && canInteract)
         {
             P.score += points;
             scoreUI.text = ":" + P.score;
@@ -43,10 +44,12 @@ public class Cornucopia : MonoBehaviour
             //int soundPlayed = Random.Range(0, 5);
             Sounds.PlayOneShot(NoteClip[0], 0.5f);
             fadeOut.SetActive(true);
+            canInteract = false;
             StartCoroutine(ReturnToBase());
             Debug.Log("Coroutine Start");
             P.inDialog = true;
             //Destroy(this.gameObject);
+
             
         }
 
