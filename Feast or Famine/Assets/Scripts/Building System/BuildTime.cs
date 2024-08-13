@@ -20,11 +20,12 @@ public class BuildTime : MonoBehaviour
     [SerializeField] GameObject defenseText;
     [SerializeField] GameObject WallUI;
     [SerializeField] GameObject TowerUI;
-    [SerializeField] GameObject BuildMode;
+    [SerializeField] GameObject BuildModeHolder;
     [SerializeField] GameObject WallUIBack;
     [SerializeField] GameObject TowerUIBack;
     [SerializeField] GameObject FeastMusic;
     [SerializeField] GameObject FamineMusic;
+    [SerializeField] GameObject food;
     public GameObject MusicHolder;
     [SerializeField] Renderer grid;
     [SerializeField] Button buildMode;
@@ -76,7 +77,7 @@ public class BuildTime : MonoBehaviour
     {
         yield return new WaitForSeconds(3.6f);
         CanvasItems.SetActive(false);
-
+        food.SetActive(false);
     }
 
     IEnumerator Countdown()
@@ -112,7 +113,9 @@ public class BuildTime : MonoBehaviour
                     canFastFoward = false;
                     canBuild = false;
                     ChangeSceneState.instance.canGetOtherScenes = false;
+                    BuildModeHolder.SetActive(false);
                     buildMode.interactable = false;
+                    defenseMode.gameObject.SetActive(true);
                     defenseMode.interactable = false;
                     buildText.SetActive(false);
                     defenseText.SetActive(true);

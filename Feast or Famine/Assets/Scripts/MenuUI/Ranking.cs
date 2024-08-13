@@ -7,11 +7,16 @@ public class Ranking : MonoBehaviour
     public GameObject[] rankings;
     public GameObject gameOverScreen;
     public GameObject MainMenu;
+    private GameObject fadeCanvas;
+    private GameObject mainManager;
+    private GameObject gridBuilding;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        fadeCanvas = GameObject.Find("FadeCanvas");
+        mainManager = GameObject.Find("MainManager");
+        gridBuilding = GameObject.Find("GridBuilding");
     }
 
     // Update is called once per frame
@@ -46,5 +51,8 @@ public class Ranking : MonoBehaviour
     public void StopGameOver()
     {
         PlayerPrefs.SetInt("GameOver", 0);
+        Destroy(fadeCanvas);
+        Destroy(mainManager);
+        Destroy(gridBuilding);
     }
 }
